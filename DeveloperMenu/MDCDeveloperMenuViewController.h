@@ -10,4 +10,7 @@
 
 @interface MDCDeveloperMenuViewController : UITableViewController
 
+- (void)attachToViewController:(UIViewController *)viewController;
+- (void)presentDeveloperConsole;
+
 @end

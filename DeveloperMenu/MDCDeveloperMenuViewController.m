@@ -10,6 +10,8 @@
 
 @interface MDCDeveloperMenuViewController ()
 
+@property (nonatomic, strong) UIViewController *attatchedViewController;
+
 @end
 
 @implementation MDCDeveloperMenuViewController
@@ -33,6 +35,26 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+#pragma mark - Presenting and dismissal handling
+
+- (void)attachToViewController:(UIViewController *)viewController
+{
+    UISwipeGestureRecognizer *fourFingers = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(presentDeveloperConsole)];
+    fourFingers.numberOfTouchesRequired = 4;
+    fourFingers.direction = UISwipeGestureRecognizerDirectionUp;
+    
+    self.attatchedViewController = viewController;
+    
+    [self.attatchedViewController.view addGestureRecognizer:fourFingers];
+}
+
+- (void)presentDeveloperConsole
+{
+    UINavigationController *developerConsole = [[UINavigationController alloc] initWithRootViewController:self];
+    
+    [self.attatchedViewController presentViewController:developerConsole animated:YES completion:nil];
 }
 
 #pragma mark - Table view data source
