@@ -21,6 +21,8 @@
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
         
+        self.title = @"Developer Menu";
+        
         [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
         
     }
