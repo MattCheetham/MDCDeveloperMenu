@@ -19,6 +19,7 @@
 		33A61851188A756E007D5701 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A61839188A756E007D5701 /* UIKit.framework */; };
 		33A61859188A756F007D5701 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 33A61857188A756F007D5701 /* InfoPlist.strings */; };
 		33A6185B188A756F007D5701 /* DeveloperMenuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A6185A188A756F007D5701 /* DeveloperMenuTests.m */; };
+		33A61866188A760E007D5701 /* MDCExampleRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A61865188A760E007D5701 /* MDCExampleRootViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,8 @@
 		33A61856188A756F007D5701 /* DeveloperMenuTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DeveloperMenuTests-Info.plist"; sourceTree = "<group>"; };
 		33A61858188A756F007D5701 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		33A6185A188A756F007D5701 /* DeveloperMenuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeveloperMenuTests.m; sourceTree = "<group>"; };
+		33A61864188A760E007D5701 /* MDCExampleRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCExampleRootViewController.h; sourceTree = "<group>"; };
+		33A61865188A760E007D5701 /* MDCExampleRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCExampleRootViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +112,10 @@
 			children = (
 				33A61844188A756E007D5701 /* MDCAppDelegate.h */,
 				33A61845188A756E007D5701 /* MDCAppDelegate.m */,
+				33A6186A188A762A007D5701 /* Controllers */,
+				33A61869188A7625007D5701 /* Models */,
+				33A61868188A761E007D5701 /* Views */,
+				33A61867188A7613007D5701 /* View Controllers */,
 				33A61847188A756E007D5701 /* Images.xcassets */,
 				33A6183C188A756E007D5701 /* Supporting Files */,
 			);
@@ -142,6 +149,36 @@
 				33A61857188A756F007D5701 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		33A61867188A7613007D5701 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				33A61864188A760E007D5701 /* MDCExampleRootViewController.h */,
+				33A61865188A760E007D5701 /* MDCExampleRootViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		33A61868188A761E007D5701 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		33A61869188A7625007D5701 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		33A6186A188A762A007D5701 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,6 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				33A61842188A756E007D5701 /* main.m in Sources */,
+				33A61866188A760E007D5701 /* MDCExampleRootViewController.m in Sources */,
 				33A61846188A756E007D5701 /* MDCAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

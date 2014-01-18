@@ -7,15 +7,24 @@
 //
 
 #import "MDCAppDelegate.h"
+#import "MDCExampleRootViewController.h"
 
 @implementation MDCAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+    
+    MDCExampleRootViewController *exampleView = [[MDCExampleRootViewController alloc] init];
+    UINavigationController *exampleNavigationController = [[UINavigationController alloc] initWithRootViewController:exampleView];
+    
+    self.window.rootViewController = exampleNavigationController;
+    
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
