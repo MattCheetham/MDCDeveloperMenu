@@ -115,8 +115,6 @@
 			children = (
 				33A61844188A756E007D5701 /* MDCAppDelegate.h */,
 				33A61845188A756E007D5701 /* MDCAppDelegate.m */,
-				33A6186B188A7741007D5701 /* MDCDeveloperMenuViewController.h */,
-				33A6186C188A7741007D5701 /* MDCDeveloperMenuViewController.m */,
 				33A6186A188A762A007D5701 /* Controllers */,
 				33A61869188A7625007D5701 /* Models */,
 				33A61868188A761E007D5701 /* Views */,
@@ -159,6 +157,8 @@
 		33A61867188A7613007D5701 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				33A6186B188A7741007D5701 /* MDCDeveloperMenuViewController.h */,
+				33A6186C188A7741007D5701 /* MDCDeveloperMenuViewController.m */,
 				33A61864188A760E007D5701 /* MDCExampleRootViewController.h */,
 				33A61865188A760E007D5701 /* MDCExampleRootViewController.m */,
 			);
