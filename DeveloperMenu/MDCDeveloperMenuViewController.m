@@ -7,6 +7,7 @@
 //
 
 #import "MDCDeveloperMenuViewController.h"
+#import "MDCPlistBrowserViewController.h"
 
 @interface MDCDeveloperMenuViewController ()
 
@@ -20,8 +21,6 @@
 {
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
-        
-        NSLog(@"Plist:%@", [[NSBundle mainBundle] infoDictionary]);
         
         self.title = @"Developer Menu"; 
         
@@ -70,7 +69,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[[[NSBundle mainBundle] infoDictionary] allKeys] count];
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -80,14 +79,14 @@
     cell.textLabel.numberOfLines = 0;
     
     // Configure the cell...
-    NSString *plistKey = [[[NSBundle mainBundle] infoDictionary] allKeys][indexPath.row];
-
-    cell.textLabel.text = [MDCValueConverter stringForObscureValue:[[NSBundle mainBundle] infoDictionary][plistKey]];
+    cell.textLabel.text = @"View plist";
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
 }
 
 #pragma mark - Tableview delegate
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
     NSString *plistKey = [[[NSBundle mainBundle] infoDictionary] allKeys][indexPath.row];
@@ -100,6 +99,14 @@
     CGFloat height = MAX(size.height, 44.0f);
     
     return height;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    MDCPlistBrowserViewController *plistBrowser = [[MDCPlistBrowserViewController alloc] initWithDictionary:[[NSBundle mainBundle] infoDictionary]];
+
+    [self.navigationController pushViewController:plistBrowser animated:YES];
 }
 
 @end
