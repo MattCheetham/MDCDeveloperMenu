@@ -77,6 +77,7 @@
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    cell.textLabel.numberOfLines = 0;
     
     // Configure the cell...
     NSString *plistKey = [[[NSBundle mainBundle] infoDictionary] allKeys][indexPath.row];
@@ -84,6 +85,21 @@
     cell.textLabel.text = [self stringForPlistValue:[[NSBundle mainBundle] infoDictionary][plistKey]];
     
     return cell;
+}
+
+#pragma mark - Tableview delegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
+{
+    NSString *plistKey = [[[NSBundle mainBundle] infoDictionary] allKeys][indexPath.row];
+    NSString *tableViewText = [self stringForPlistValue:[[NSBundle mainBundle] infoDictionary][plistKey]];
+
+    CGSize constraint = CGSizeMake(300, MAXFLOAT);
+    
+    CGSize size = [tableViewText sizeWithFont:[UIFont systemFontOfSize:20] constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
+    
+    CGFloat height = MAX(size.height, 44.0f);
+    
+    return height;
 }
 
 #pragma mark - Data format handling
