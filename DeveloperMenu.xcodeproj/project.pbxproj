@@ -21,6 +21,7 @@
 		33A6185B188A756F007D5701 /* DeveloperMenuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A6185A188A756F007D5701 /* DeveloperMenuTests.m */; };
 		33A61866188A760E007D5701 /* MDCExampleRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A61865188A760E007D5701 /* MDCExampleRootViewController.m */; };
 		33A6186D188A7741007D5701 /* MDCDeveloperMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A6186C188A7741007D5701 /* MDCDeveloperMenuViewController.m */; };
+		33C66B49189AEE5D007E0C36 /* MDCValueConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 33C66B48189AEE5D007E0C36 /* MDCValueConverter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		33A61865188A760E007D5701 /* MDCExampleRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCExampleRootViewController.m; sourceTree = "<group>"; };
 		33A6186B188A7741007D5701 /* MDCDeveloperMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCDeveloperMenuViewController.h; sourceTree = "<group>"; };
 		33A6186C188A7741007D5701 /* MDCDeveloperMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCDeveloperMenuViewController.m; sourceTree = "<group>"; };
+		33C66B47189AEE5D007E0C36 /* MDCValueConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCValueConverter.h; sourceTree = "<group>"; };
+		33C66B48189AEE5D007E0C36 /* MDCValueConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCValueConverter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +123,7 @@
 				33A61868188A761E007D5701 /* Views */,
 				33A61867188A7613007D5701 /* View Controllers */,
 				33A61847188A756E007D5701 /* Images.xcassets */,
+				33C66B4A189AEE9B007E0C36 /* Convenience */,
 				33A6183C188A756E007D5701 /* Supporting Files */,
 			);
 			path = DeveloperMenu;
@@ -184,6 +188,15 @@
 			children = (
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		33C66B4A189AEE9B007E0C36 /* Convenience */ = {
+			isa = PBXGroup;
+			children = (
+				33C66B47189AEE5D007E0C36 /* MDCValueConverter.h */,
+				33C66B48189AEE5D007E0C36 /* MDCValueConverter.m */,
+			);
+			name = Convenience;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,6 +299,7 @@
 				33A61866188A760E007D5701 /* MDCExampleRootViewController.m in Sources */,
 				33A6186D188A7741007D5701 /* MDCDeveloperMenuViewController.m in Sources */,
 				33A61846188A756E007D5701 /* MDCAppDelegate.m in Sources */,
+				33C66B49189AEE5D007E0C36 /* MDCValueConverter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

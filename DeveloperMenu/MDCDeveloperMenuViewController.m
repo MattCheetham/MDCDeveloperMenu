@@ -82,7 +82,7 @@
     // Configure the cell...
     NSString *plistKey = [[[NSBundle mainBundle] infoDictionary] allKeys][indexPath.row];
 
-    cell.textLabel.text = [self stringForPlistValue:[[NSBundle mainBundle] infoDictionary][plistKey]];
+    cell.textLabel.text = [MDCValueConverter stringForObscureValue:[[NSBundle mainBundle] infoDictionary][plistKey]];
     
     return cell;
 }
@@ -91,7 +91,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
     NSString *plistKey = [[[NSBundle mainBundle] infoDictionary] allKeys][indexPath.row];
-    NSString *tableViewText = [self stringForPlistValue:[[NSBundle mainBundle] infoDictionary][plistKey]];
+    NSString *tableViewText = [MDCValueConverter stringForObscureValue:[[NSBundle mainBundle] infoDictionary][plistKey]];
 
     CGSize constraint = CGSizeMake(300, MAXFLOAT);
     
@@ -100,39 +100,6 @@
     CGFloat height = MAX(size.height, 44.0f);
     
     return height;
-}
-
-#pragma mark - Data format handling
-
-- (NSString *)stringForPlistValue:(id)value
-{
-    if([value isKindOfClass:[NSString class]]){
-        
-        return (NSString *)value;
-        
-    } else if([value isKindOfClass:[NSURL class]]){
-        
-        return ((NSURL *)value).absoluteString;
-        
-    } else if([value isKindOfClass:[NSArray class]]){
-        
-        return @"Array";
-        
-    } else if([value isKindOfClass:[NSNumber class]]){
-        
-        return [((NSNumber *)value) stringValue];
-    
-    } else if([NSStringFromClass([value class]) isEqualToString:@"__NSCFBoolean"]){
-    
-        BOOL boolValue = (BOOL)value;
-        return boolValue ? @"Yes" : @"No";
-    
-    } else {
-        
-        NSLog(@"Unrecognised type:%@", [value class]);
-    }
-    
-    return nil;
 }
 
 @end
