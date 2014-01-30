@@ -8,6 +8,7 @@
 
 #import "MDCDeveloperMenuViewController.h"
 #import "MDCPlistBrowserViewController.h"
+#import "MDCPlistController.h"
 
 @interface MDCDeveloperMenuViewController ()
 
@@ -104,7 +105,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    MDCPlistBrowserViewController *plistBrowser = [[MDCPlistBrowserViewController alloc] initWithDictionary:[[NSBundle mainBundle] infoDictionary]];
+    MDCPlistBrowserViewController *plistBrowser = [[MDCPlistBrowserViewController alloc] initWithPlistItems:[MDCPlistController sharedController].plistItems];
 
     [self.navigationController pushViewController:plistBrowser animated:YES];
 }

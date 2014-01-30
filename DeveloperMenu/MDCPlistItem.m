@@ -19,7 +19,7 @@
         self.plistKey = key;
         
         if([value isKindOfClass:[NSDictionary class]]){
-                        
+            
             for (NSString *dictionaryKey in (NSDictionary *)value){
                 
                 MDCPlistItem *item = [[MDCPlistItem alloc] initWithKey:dictionaryKey value:value[dictionaryKey]];
@@ -35,8 +35,6 @@
             
             for (id arrayValue in (NSArray *)value){
                 
-                NSLog(@"Value:%@", arrayValue);
-                NSLog(@"Class:%@", [arrayValue class]);
                 MDCPlistItem *item = [[MDCPlistItem alloc] initWithKey:nil value:arrayValue];
                 [self.children addObject:item];
                 
