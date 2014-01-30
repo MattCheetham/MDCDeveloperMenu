@@ -8,6 +8,7 @@
 
 #import "MDCPlistBrowserViewController.h"
 #import "MDCPlistItemCell.h"
+#import "MDCPlistController.h"
 
 @interface MDCPlistBrowserViewController ()
 
@@ -23,6 +24,8 @@
     if (self) {
         
 //        NSLog(@"Defaults:%@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
+        
+        [MDCPlistController sharedController];
         
         self.title = @"Developer Menu";
         

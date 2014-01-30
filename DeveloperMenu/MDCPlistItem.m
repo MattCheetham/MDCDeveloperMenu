@@ -10,11 +10,40 @@
 
 @implementation MDCPlistItem
 
-- (id)init
+- (id)initWithKey:(NSString *)key value:(id)value
 {
     self = [super init];
     if (self) {
         self.children = [NSMutableArray array];
+        
+        self.plistKey = key;
+        
+        if([value isKindOfClass:[NSDictionary class]]){
+                        
+            for (NSString *dictionaryKey in (NSDictionary *)value){
+                
+                MDCPlistItem *item = [[MDCPlistItem alloc] initWithKey:dictionaryKey value:value[dictionaryKey]];
+                [self.children addObject:item];
+                
+            }
+            
+        }else if(![value isKindOfClass:[NSArray class]]){
+            
+            self.plistValue = [MDCValueConverter stringForObscureValue:value];
+            
+        } else {
+            
+            for (id arrayValue in (NSArray *)value){
+                
+                NSLog(@"Value:%@", arrayValue);
+                NSLog(@"Class:%@", [arrayValue class]);
+                MDCPlistItem *item = [[MDCPlistItem alloc] initWithKey:nil value:arrayValue];
+                [self.children addObject:item];
+                
+            }
+            
+        }
+        
     }
     return self;
 }

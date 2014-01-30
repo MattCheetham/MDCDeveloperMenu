@@ -14,4 +14,6 @@
 @property (nonatomic, strong) NSString *plistKey;
 @property (nonatomic, strong) NSMutableArray *children;
 
+- (id)initWithKey:(NSString *)key value:(id)value;
+
 @end

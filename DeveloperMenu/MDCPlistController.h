@@ -1,5 +1,5 @@
 //
-//  MDCValueConverter.h
+//  MDCPlistController.h
 //  DeveloperMenu
 //
 //  Created by Matthew Cheetham on 30/01/2014.
@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MDCValueConverter : NSObject
+@interface MDCPlistController : NSObject
 
-+ (NSString *)stringForObscureValue:(id)value;
-+ (BOOL)valueIsString:(id)value;
+@property (nonatomic, strong) NSMutableArray *plistItems;
+
++ (MDCPlistController *)sharedController;
 
 @end
