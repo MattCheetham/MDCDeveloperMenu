@@ -23,6 +23,7 @@
 		33A6186D188A7741007D5701 /* MDCDeveloperMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A6186C188A7741007D5701 /* MDCDeveloperMenuViewController.m */; };
 		33C66B49189AEE5D007E0C36 /* MDCValueConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 33C66B48189AEE5D007E0C36 /* MDCValueConverter.m */; };
 		33C66B4D189AEF3B007E0C36 /* MDCPlistBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33C66B4C189AEF3B007E0C36 /* MDCPlistBrowserViewController.m */; };
+		33C66B50189AF5B7007E0C36 /* MDCPlistItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33C66B4F189AF5B7007E0C36 /* MDCPlistItemCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,8 @@
 		33C66B48189AEE5D007E0C36 /* MDCValueConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCValueConverter.m; sourceTree = "<group>"; };
 		33C66B4B189AEF3B007E0C36 /* MDCPlistBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCPlistBrowserViewController.h; sourceTree = "<group>"; };
 		33C66B4C189AEF3B007E0C36 /* MDCPlistBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCPlistBrowserViewController.m; sourceTree = "<group>"; };
+		33C66B4E189AF5B7007E0C36 /* MDCPlistItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCPlistItemCell.h; sourceTree = "<group>"; };
+		33C66B4F189AF5B7007E0C36 /* MDCPlistItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCPlistItemCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +180,8 @@
 		33A61868188A761E007D5701 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				33C66B4E189AF5B7007E0C36 /* MDCPlistItemCell.h */,
+				33C66B4F189AF5B7007E0C36 /* MDCPlistItemCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -303,6 +308,7 @@
 				33A61842188A756E007D5701 /* main.m in Sources */,
 				33C66B4D189AEF3B007E0C36 /* MDCPlistBrowserViewController.m in Sources */,
 				33A61866188A760E007D5701 /* MDCExampleRootViewController.m in Sources */,
+				33C66B50189AF5B7007E0C36 /* MDCPlistItemCell.m in Sources */,
 				33A6186D188A7741007D5701 /* MDCDeveloperMenuViewController.m in Sources */,
 				33A61846188A756E007D5701 /* MDCAppDelegate.m in Sources */,
 				33C66B49189AEE5D007E0C36 /* MDCValueConverter.m in Sources */,

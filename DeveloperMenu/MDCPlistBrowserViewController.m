@@ -7,6 +7,7 @@
 //
 
 #import "MDCPlistBrowserViewController.h"
+#import "MDCPlistItemCell.h"
 
 @interface MDCPlistBrowserViewController ()
 
@@ -25,7 +26,7 @@
         
         self.plistDictionary = dictionary;
         
-        [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
+        [self.tableView registerClass:[MDCPlistItemCell class] forCellReuseIdentifier:@"Cell"];
         
     }
     return self;
@@ -56,13 +57,19 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    MDCPlistItemCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     cell.textLabel.numberOfLines = 0;
+    cell.accessoryType = UITableViewCellAccessoryNone;
     
     // Configure the cell...
     NSString *plistKey = [self.plistDictionary allKeys][indexPath.row];
     
     cell.textLabel.text = [MDCValueConverter stringForObscureValue:self.plistDictionary[plistKey]];
+    cell.detailTextLabel.text = plistKey;
+    
+    if([cell.textLabel.text isEqualToString:@"Dictionary"]){
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
     
     return cell;
 }
@@ -77,7 +84,7 @@
     
     CGSize size = [tableViewText sizeWithFont:[UIFont systemFontOfSize:20] constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
     
-    CGFloat height = MAX(size.height, 44.0f);
+    CGFloat height = MAX(size.height + 11, 44.0f);
     
     return height;
 }
