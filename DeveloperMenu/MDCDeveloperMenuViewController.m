@@ -21,6 +21,8 @@
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
         
+        NSLog(@"Plist:%@", [[NSBundle mainBundle] infoDictionary]);
+        
         self.title = @"Developer Menu"; 
         
         [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
@@ -63,12 +65,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return [[[[NSBundle mainBundle] infoDictionary] allKeys] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -77,8 +79,44 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
+    NSString *plistKey = [[[NSBundle mainBundle] infoDictionary] allKeys][indexPath.row];
+
+    cell.textLabel.text = [self stringForPlistValue:[[NSBundle mainBundle] infoDictionary][plistKey]];
     
     return cell;
+}
+
+#pragma mark - Data format handling
+
+- (NSString *)stringForPlistValue:(id)value
+{
+    if([value isKindOfClass:[NSString class]]){
+        
+        return (NSString *)value;
+        
+    } else if([value isKindOfClass:[NSURL class]]){
+        
+        return ((NSURL *)value).absoluteString;
+        
+    } else if([value isKindOfClass:[NSArray class]]){
+        
+        return @"Array";
+        
+    } else if([value isKindOfClass:[NSNumber class]]){
+        
+        return [((NSNumber *)value) stringValue];
+    
+    } else if([NSStringFromClass([value class]) isEqualToString:@"__NSCFBoolean"]){
+    
+        BOOL boolValue = (BOOL)value;
+        return boolValue ? @"Yes" : @"No";
+    
+    } else {
+        
+        NSLog(@"Unrecognised type:%@", [value class]);
+    }
+    
+    return nil;
 }
 
 @end
