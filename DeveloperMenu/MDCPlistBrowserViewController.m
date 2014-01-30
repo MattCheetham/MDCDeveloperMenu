@@ -22,6 +22,8 @@
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
         
+//        NSLog(@"Defaults:%@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
+        
         self.title = @"Developer Menu";
         
         self.plistDictionary = dictionary;
