@@ -10,6 +10,6 @@
 
 @interface MDCPlistBrowserViewController : UITableViewController
 
-- (id)initWithDictionary:(NSDictionary *)dictionary;
+- (id)initWithPlistItems:(NSArray *)items;
 
 @end

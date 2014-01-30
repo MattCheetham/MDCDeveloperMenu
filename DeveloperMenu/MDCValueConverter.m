@@ -47,4 +47,14 @@
     return nil;
 }
 
++ (BOOL)valueIsString:(id)value
+{
+    if([value isKindOfClass:[NSString class]]){
+        
+        return YES;
+        
+    }
+    
+    return NO;
+}
 @end

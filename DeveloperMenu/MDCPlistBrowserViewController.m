@@ -8,23 +8,26 @@
 
 #import "MDCPlistBrowserViewController.h"
 #import "MDCPlistItemCell.h"
+#import "MDCPlistController.h"
+#import "MDCPlistItem.h"
 
 @interface MDCPlistBrowserViewController ()
 
-@property (nonatomic, strong) NSDictionary *plistDictionary;
+@property (nonatomic, strong) NSArray *plistItems;
+
 
 @end
 
 @implementation MDCPlistBrowserViewController
 
-- (id)initWithDictionary:(NSDictionary *)dictionary
+- (id)initWithPlistItems:(NSArray *)items
 {
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
         
         self.title = @"Developer Menu";
         
-        self.plistDictionary = dictionary;
+        self.plistItems = items;
         
         [self.tableView registerClass:[MDCPlistItemCell class] forCellReuseIdentifier:@"Cell"];
         
@@ -51,7 +54,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[self.plistDictionary allKeys] count];
+    return self.plistItems.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -62,12 +65,13 @@
     cell.accessoryType = UITableViewCellAccessoryNone;
     
     // Configure the cell...
-    NSString *plistKey = [self.plistDictionary allKeys][indexPath.row];
     
-    cell.textLabel.text = [MDCValueConverter stringForObscureValue:self.plistDictionary[plistKey]];
-    cell.detailTextLabel.text = plistKey;
+    MDCPlistItem *item = self.plistItems[indexPath.row];
     
-    if([cell.textLabel.text isEqualToString:@"Dictionary"]){
+    cell.textLabel.text = item.plistValue;
+    cell.detailTextLabel.text = item.plistKey;
+    
+    if(item.children.count){
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
@@ -77,12 +81,11 @@
 #pragma mark - Tableview delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-    NSString *plistKey = [self.plistDictionary allKeys][indexPath.row];
-    NSString *tableViewText = [MDCValueConverter stringForObscureValue:[[NSBundle mainBundle] infoDictionary][plistKey]];
+    MDCPlistItem *item = self.plistItems[indexPath.row];
     
     CGSize constraint = CGSizeMake(300, MAXFLOAT);
     
-    CGSize size = [tableViewText sizeWithFont:[UIFont systemFontOfSize:20] constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
+    CGSize size = [item.plistValue sizeWithFont:[UIFont systemFontOfSize:20] constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
     
     CGFloat height = MAX(size.height + 11, 44.0f);
     
@@ -91,14 +94,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *plistKey = [self.plistDictionary allKeys][indexPath.row];
-    NSString *value = [MDCValueConverter stringForObscureValue:self.plistDictionary[plistKey]];
-    
-    if([value isEqualToString:@"Dictionary"]){
-        MDCPlistBrowserViewController *plistBrowser = [[MDCPlistBrowserViewController alloc] initWithDictionary:self.plistDictionary[plistKey][0]];
+    MDCPlistItem *item = self.plistItems[indexPath.row];
+
+    if(item.children.count){
+        MDCPlistBrowserViewController *plistBrowser = [[MDCPlistBrowserViewController alloc] initWithPlistItems:item.children];
         [self.navigationController pushViewController:plistBrowser animated:YES];
     }
-    
-    NSLog(@"Index:%@", self.plistDictionary[plistKey]);
+
 }
 @end
