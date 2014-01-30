@@ -21,6 +21,8 @@
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
         
+        NSLog(@"Plist:%@", [[NSBundle mainBundle] infoDictionary]);
+        
         self.title = @"Developer Menu"; 
         
         [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
@@ -63,12 +65,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return [[[[NSBundle mainBundle] infoDictionary] allKeys] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
