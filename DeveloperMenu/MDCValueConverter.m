@@ -22,7 +22,13 @@
         
     } else if([value isKindOfClass:[NSArray class]]){
         
-        return @"Array";
+        if(((NSArray *)value).count == 1){
+            return [MDCValueConverter stringForObscureValue:(NSArray *)value[0]];
+        }
+        
+    } else if([value isKindOfClass:[NSDictionary class]]){
+        
+        return @"Dictionary";
         
     } else if([value isKindOfClass:[NSNumber class]]){
         
