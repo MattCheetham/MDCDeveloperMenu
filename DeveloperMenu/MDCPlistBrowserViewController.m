@@ -62,7 +62,7 @@
     // Configure the cell...
     NSString *plistKey = [self.plistDictionary allKeys][indexPath.row];
     
-    cell.textLabel.text = [MDCValueConverter stringForObscureValue:[[NSBundle mainBundle] infoDictionary][plistKey]];
+    cell.textLabel.text = [MDCValueConverter stringForObscureValue:self.plistDictionary[plistKey]];
     
     return cell;
 }
@@ -82,4 +82,16 @@
     return height;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *plistKey = [self.plistDictionary allKeys][indexPath.row];
+    NSString *value = [MDCValueConverter stringForObscureValue:self.plistDictionary[plistKey]];
+    
+    if([value isEqualToString:@"Dictionary"]){
+        MDCPlistBrowserViewController *plistBrowser = [[MDCPlistBrowserViewController alloc] initWithDictionary:self.plistDictionary[plistKey][0]];
+        [self.navigationController pushViewController:plistBrowser animated:YES];
+    }
+    
+    NSLog(@"Index:%@", self.plistDictionary[plistKey]);
+}
 @end
