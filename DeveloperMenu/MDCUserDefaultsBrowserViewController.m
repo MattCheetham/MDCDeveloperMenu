@@ -9,6 +9,7 @@
 #import "MDCUserDefaultsBrowserViewController.h"
 #import "MDCPlistItemCell.h"
 #import "MDCUserDefaultItem.h"
+#import "MDCUserDefaultsController.h"
 
 @interface MDCUserDefaultsBrowserViewController ()
 
@@ -116,6 +117,16 @@
     }
     
     [self.tableView setEditing:!self.tableView.editing animated:YES];
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(editingStyle == UITableViewCellEditingStyleDelete){
+        
+        MDCUserDefaultItem *item = self.userDefaultsItems[indexPath.row];
+        [[MDCUserDefaultsController sharedController] deleteUserDefaultsItem:item];
+        
+    }
 }
 
 @end
