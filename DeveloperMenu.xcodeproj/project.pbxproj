@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		330ED02A189C0E35001AF047 /* MDCUserDefaultsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 330ED029189C0E35001AF047 /* MDCUserDefaultsController.m */; };
+		330ED02D189C0EE4001AF047 /* MDCUserDefaultItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 330ED02C189C0EE4001AF047 /* MDCUserDefaultItem.m */; };
+		330ED030189C10C8001AF047 /* MDCUserDefaultsBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 330ED02F189C10C8001AF047 /* MDCUserDefaultsBrowserViewController.m */; };
 		33A61836188A756E007D5701 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A61835188A756E007D5701 /* Foundation.framework */; };
 		33A61838188A756E007D5701 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A61837188A756E007D5701 /* CoreGraphics.framework */; };
 		33A6183A188A756E007D5701 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A61839188A756E007D5701 /* UIKit.framework */; };
@@ -42,6 +44,10 @@
 /* Begin PBXFileReference section */
 		330ED028189C0E35001AF047 /* MDCUserDefaultsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCUserDefaultsController.h; sourceTree = "<group>"; };
 		330ED029189C0E35001AF047 /* MDCUserDefaultsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCUserDefaultsController.m; sourceTree = "<group>"; };
+		330ED02B189C0EE4001AF047 /* MDCUserDefaultItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCUserDefaultItem.h; sourceTree = "<group>"; };
+		330ED02C189C0EE4001AF047 /* MDCUserDefaultItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCUserDefaultItem.m; sourceTree = "<group>"; };
+		330ED02E189C10C8001AF047 /* MDCUserDefaultsBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCUserDefaultsBrowserViewController.h; sourceTree = "<group>"; };
+		330ED02F189C10C8001AF047 /* MDCUserDefaultsBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCUserDefaultsBrowserViewController.m; sourceTree = "<group>"; };
 		33A61832188A756E007D5701 /* DeveloperMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeveloperMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33A61835188A756E007D5701 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		33A61837188A756E007D5701 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -176,6 +182,8 @@
 		33A61867188A7613007D5701 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				330ED02E189C10C8001AF047 /* MDCUserDefaultsBrowserViewController.h */,
+				330ED02F189C10C8001AF047 /* MDCUserDefaultsBrowserViewController.m */,
 				33C66B4B189AEF3B007E0C36 /* MDCPlistBrowserViewController.h */,
 				33C66B4C189AEF3B007E0C36 /* MDCPlistBrowserViewController.m */,
 				33A6186B188A7741007D5701 /* MDCDeveloperMenuViewController.h */,
@@ -198,6 +206,8 @@
 		33A61869188A7625007D5701 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				330ED02B189C0EE4001AF047 /* MDCUserDefaultItem.h */,
+				330ED02C189C0EE4001AF047 /* MDCUserDefaultItem.m */,
 				33C66B51189AFF91007E0C36 /* MDCPlistItem.h */,
 				33C66B52189AFF91007E0C36 /* MDCPlistItem.m */,
 			);
@@ -322,6 +332,8 @@
 			files = (
 				33C66B53189AFF91007E0C36 /* MDCPlistItem.m in Sources */,
 				330ED02A189C0E35001AF047 /* MDCUserDefaultsController.m in Sources */,
+				330ED02D189C0EE4001AF047 /* MDCUserDefaultItem.m in Sources */,
+				330ED030189C10C8001AF047 /* MDCUserDefaultsBrowserViewController.m in Sources */,
 				33A61842188A756E007D5701 /* main.m in Sources */,
 				33C66B4D189AEF3B007E0C36 /* MDCPlistBrowserViewController.m in Sources */,
 				33A61866188A760E007D5701 /* MDCExampleRootViewController.m in Sources */,

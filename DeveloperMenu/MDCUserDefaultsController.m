@@ -7,6 +7,7 @@
 //
 
 #import "MDCUserDefaultsController.h"
+#import "MDCUserDefaultItem.h"
 
 @implementation MDCUserDefaultsController
 
@@ -27,6 +28,15 @@ static MDCUserDefaultsController *sharedController = nil;
     self = [super init];
     if (self) {
         
+        self.userDefaultsItems = [NSMutableArray array];
+
+        for (NSString *key in [[[NSUserDefaults standardUserDefaults] dictionaryRepresentation] allKeys]) {
+            
+            MDCUserDefaultItem *item = [[MDCUserDefaultItem alloc] initWithKey:key value:[[NSUserDefaults standardUserDefaults] dictionaryRepresentation][key]];
+            
+            [self.userDefaultsItems addObject:item];
+        }
+                
     }
     return self;
 }
