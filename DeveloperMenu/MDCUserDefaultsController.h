@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) NSMutableArray *userDefaultsItems;
 
+- (void)deleteUserDefaultsItem:(MDCUserDefaultItem *)item;
 + (MDCUserDefaultsController *)sharedController;
 
 @end
