@@ -29,13 +29,8 @@ static MDCUserDefaultsController *sharedController = nil;
     if (self) {
         
         self.userDefaultsItems = [NSMutableArray array];
-
-        for (NSString *key in [[[NSUserDefaults standardUserDefaults] dictionaryRepresentation] allKeys]) {
-            
-            MDCUserDefaultItem *item = [[MDCUserDefaultItem alloc] initWithKey:key value:[[NSUserDefaults standardUserDefaults] dictionaryRepresentation][key]];
-            
-            [self.userDefaultsItems addObject:item];
-        }
+        
+        [self reloadDefaults];
                 
     }
     return self;
@@ -45,6 +40,24 @@ static MDCUserDefaultsController *sharedController = nil;
 {
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:item.defaultKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [self reloadDefaults];
+}
+
+- (void)reloadDefaults
+{
+    [self willChangeValueForKey:@"userDefaultsItems"];
+    
+    [self.userDefaultsItems removeAllObjects];
+    
+    for (NSString *key in [[[NSUserDefaults standardUserDefaults] dictionaryRepresentation] allKeys]) {
+        
+        MDCUserDefaultItem *item = [[MDCUserDefaultItem alloc] initWithKey:key value:[[NSUserDefaults standardUserDefaults] dictionaryRepresentation][key]];
+        
+        [self.userDefaultsItems addObject:item];
+        
+    }
+    [self didChangeValueForKey:@"userDefaultsItems"];
 }
 
 @end
