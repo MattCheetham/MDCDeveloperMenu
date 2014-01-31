@@ -13,6 +13,7 @@
 @interface MDCUserDefaultsBrowserViewController ()
 
 @property (nonatomic, strong) NSArray *userDefaultsItems;
+@property (nonatomic, strong) UIBarButtonItem *editButton;
 
 @end
 
@@ -24,6 +25,9 @@
     if (self) {
         
         self.title = @"User Defaults";
+        
+        self.editButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(editItems)];
+        self.navigationItem.rightBarButtonItem = self.editButton;
         
         self.userDefaultsItems = items;
         
@@ -99,6 +103,19 @@
         [self.navigationController pushViewController:defaultsBrowser animated:YES];
     }
     
+}
+
+#pragma mark - Edit handling
+
+- (void)editItems
+{
+    if(self.tableView.editing){
+        self.editButton.title = @"Edit";
+    } else {
+        self.editButton.title = @"Done";
+    }
+    
+    [self.tableView setEditing:!self.tableView.editing animated:YES];
 }
 
 @end
