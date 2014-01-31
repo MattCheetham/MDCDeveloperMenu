@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Matthew Cheetham. All rights reserved.
 //
 
+@class MDCUserDefaultItem;
+
 #import <Foundation/Foundation.h>
 
 @interface MDCUserDefaultsController : NSObject
