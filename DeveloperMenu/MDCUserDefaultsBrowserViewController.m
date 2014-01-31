@@ -34,6 +34,8 @@
         
         [self.tableView registerClass:[MDCPlistItemCell class] forCellReuseIdentifier:@"Cell"];
         
+        [[MDCUserDefaultsController sharedController] addObserver:self forKeyPath:@"userDefaultsItems" options:kNilOptions context:nil];
+        
     }
     return self;
 }
@@ -125,6 +127,17 @@
         
         MDCUserDefaultItem *item = self.userDefaultsItems[indexPath.row];
         [[MDCUserDefaultsController sharedController] deleteUserDefaultsItem:item];
+        
+    }
+}
+
+#pragma mark - KVO handling
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if([keyPath isEqualToString:@"userDefaultsItems"]){
+        
+        [self.tableView reloadData];
         
     }
 }
