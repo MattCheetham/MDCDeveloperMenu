@@ -12,6 +12,7 @@
 #import "MDCUserDefaultsBrowserViewController.h"
 #import "MDCUserDefaultsController.h"
 #import "MDCLogBrowserViewController.h"
+#import "MDCDeviceInformationBrowserViewController.h"
 
 @interface MDCDeveloperMenuViewController ()
 
@@ -73,7 +74,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -91,6 +92,8 @@
         cell.textLabel.text = @"View NSUserDefaults";
     } else if(indexPath.row == 2){
         cell.textLabel.text = @"View console logs";
+    } else if(indexPath.row == 3){
+        cell.textLabel.text = @"View device information";
     }
     
     return cell;
@@ -132,6 +135,12 @@
         MDCLogBrowserViewController *logBrowser = [MDCLogBrowserViewController new];
         
         [self.navigationController pushViewController:logBrowser animated:YES];
+        
+    } else if(indexPath.row == 3){
+        
+        MDCDeviceInformationBrowserViewController *deviceInfoBrowser = [MDCDeviceInformationBrowserViewController new];
+        
+        [self.navigationController pushViewController:deviceInfoBrowser animated:YES];
         
     }
 }
