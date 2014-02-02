@@ -27,5 +27,6 @@ typedef enum {
 
 + (MDCLog *)logWithContent:(NSString *)logContent content:(MDCLogLevel)logLevel;
 - (NSString *)logContentWithLevelPrefix;
+- (NSString *)friendlyTimeAndDate;
 
 @end

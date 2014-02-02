@@ -23,6 +23,8 @@
         asl_add_log_file(NULL, STDERR_FILENO);
     });
     
+    NSLog(@"Hey");
+    
     //Print log
     asl_log(NULL, NULL, logLevel, "%s", [logContent UTF8String]);
     
@@ -66,6 +68,14 @@
             return @"Unknown";
             break;
     }
+}
+
+- (NSString *)friendlyTimeAndDate
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    
+    return [formatter stringFromDate:self.logTime];
 }
 
 @end
