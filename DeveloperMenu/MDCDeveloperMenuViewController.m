@@ -86,11 +86,11 @@
     // Configure the cell...
     
     if(indexPath.row == 0){
-        cell.textLabel.text = @"View plist";
+        cell.textLabel.text = @"View Info Plist";
     } else if(indexPath.row == 1){
         cell.textLabel.text = @"View NSUserDefaults";
     } else if(indexPath.row == 2){
-        cell.textLabel.text = @"View app logs";
+        cell.textLabel.text = @"View console logs";
     }
     
     return cell;
