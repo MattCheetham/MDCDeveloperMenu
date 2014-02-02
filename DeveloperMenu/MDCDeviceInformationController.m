@@ -49,8 +49,38 @@ static MDCDeviceInformationController *sharedController = nil;
     MDCDeviceInformationItem *deviceMultiTaskingSupport = [MDCDeviceInformationItem itemWithProperty:@"Multitasking Supported" value:self.currentDevice.multitaskingSupported ? @"Yes" : @"No"];
     MDCDeviceInformationItem *deviceSystemName = [MDCDeviceInformationItem itemWithProperty:@"System Name" value:self.currentDevice.systemName];
     MDCDeviceInformationItem *deviceSystemVersion = [MDCDeviceInformationItem itemWithProperty:@"System Version" value:self.currentDevice.systemVersion];
+    MDCDeviceInformationItem *deviceModel = [MDCDeviceInformationItem itemWithProperty:@"Model" value:self.currentDevice.model];
+    MDCDeviceInformationItem *deviceIdentifierForVendor = [MDCDeviceInformationItem itemWithProperty:@"Identifier For Vendor" value:self.currentDevice.identifierForVendor.UUIDString];
     
-    [self.deviceInformationItems addObjectsFromArray:@[deviceName, deviceMultiTaskingSupport, deviceSystemName, deviceSystemVersion]];
+    //Enable battery monitoring
+    self.currentDevice.batteryMonitoringEnabled = YES;
+    
+    MDCDeviceInformationItem *deviceBatteryLevel = [MDCDeviceInformationItem itemWithProperty:@"Battery Level" value:[NSString stringWithFormat:@"%.0f%%", self.currentDevice.batteryLevel * 100]];
+    MDCDeviceInformationItem *deviceBatteryState = [MDCDeviceInformationItem itemWithProperty:@"Battery State" value:[self stringForBatteryState:self.currentDevice.batteryState]];
+        
+    [self.deviceInformationItems addObjectsFromArray:@[deviceName, deviceMultiTaskingSupport, deviceSystemName, deviceSystemVersion, deviceModel, deviceIdentifierForVendor, deviceBatteryLevel, deviceBatteryState]];
+}
+
+- (NSString *)stringForBatteryState:(UIDeviceBatteryState)batteryState
+{
+    switch (batteryState) {
+        case UIDeviceBatteryStateCharging:
+            return @"Charging";
+            break;
+        case UIDeviceBatteryStateFull:
+            return @"Full";
+            break;
+        case UIDeviceBatteryStateUnplugged:
+            return @"Unplugged";
+            break;
+        case UIDeviceBatteryStateUnknown:
+            return @"Unknown";
+            break;
+            
+        default:
+            return @"Unknown";
+            break;
+    }
 }
 
 @end
