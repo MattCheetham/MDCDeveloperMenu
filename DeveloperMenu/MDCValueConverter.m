@@ -41,7 +41,7 @@
         
     } else {
         
-        NSLog(@"Unrecognised type:%@", [value class]);
+        MDCLogWarning(@"Unrecognised type:%@", [value class]);
     }
     
     return nil;

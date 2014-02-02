@@ -11,6 +11,7 @@
 #import "MDCPlistController.h"
 #import "MDCUserDefaultsBrowserViewController.h"
 #import "MDCUserDefaultsController.h"
+#import "MDCLogBrowserViewController.h"
 
 @interface MDCDeveloperMenuViewController ()
 
@@ -72,7 +73,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -85,9 +86,11 @@
     // Configure the cell...
     
     if(indexPath.row == 0){
-        cell.textLabel.text = @"View plist";
+        cell.textLabel.text = @"View Info Plist";
     } else if(indexPath.row == 1){
         cell.textLabel.text = @"View NSUserDefaults";
+    } else if(indexPath.row == 2){
+        cell.textLabel.text = @"View console logs";
     }
     
     return cell;
@@ -123,6 +126,12 @@
         MDCUserDefaultsBrowserViewController *defaultsBrowser = [[MDCUserDefaultsBrowserViewController alloc] initWithUserDefaultsItems:[MDCUserDefaultsController sharedController].userDefaultsItems];
         
         [self.navigationController pushViewController:defaultsBrowser animated:YES];
+        
+    } else if(indexPath.row == 2){
+        
+        MDCLogBrowserViewController *logBrowser = [MDCLogBrowserViewController new];
+        
+        [self.navigationController pushViewController:logBrowser animated:YES];
         
     }
 }
