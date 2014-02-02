@@ -7,8 +7,13 @@
 //
 
 #import "MDCDeviceInformationBrowserViewController.h"
+#import "MDCDeviceInformationController.h"
+#import "MDCDeviceInformationItem.h"
+#import "MDCCell.h"
 
 @interface MDCDeviceInformationBrowserViewController ()
+
+@property (nonatomic, strong) MDCDeviceInformationController *deviceInformationController;
 
 @end
 
@@ -21,12 +26,9 @@
         
         self.title = @"Device information";
         
-        self.logController = [MDCLogController sharedController];
+        self.deviceInformationController = [MDCDeviceInformationController sharedController];
         
         [self.tableView registerClass:[MDCCell class] forCellReuseIdentifier:@"Cell"];
-        
-        //Register KVO
-        [self.logController addObserver:self forKeyPath:@"deviceLogs" options:kNilOptions context:nil];
         
     }
     return self;
@@ -51,7 +53,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.logController.deviceLogs.count;
+    return self.deviceInformationController.deviceInformationItems.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -63,10 +65,10 @@
     
     // Configure the cell...
     
-    MDCLog *log = self.logController.deviceLogs[indexPath.row];
+    MDCDeviceInformationItem *deviceItem = self.deviceInformationController.deviceInformationItems[indexPath.row];
     
-    cell.textLabel.text = [log logContentWithLevelPrefix];
-    cell.detailTextLabel.text = [log friendlyTimeAndDate];
+    cell.textLabel.text = deviceItem.deviceValue;
+    cell.detailTextLabel.text = deviceItem.deviceProperty;
     
     return cell;
 }
@@ -74,11 +76,11 @@
 #pragma mark - Tableview delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-    MDCLog *log = self.logController.deviceLogs[indexPath.row];
+    MDCDeviceInformationItem *deviceItem = self.deviceInformationController.deviceInformationItems[indexPath.row];
     
     CGSize constraint = CGSizeMake(300, MAXFLOAT);
     
-    CGSize size = [log.logContent sizeWithFont:[UIFont systemFontOfSize:20] constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
+    CGSize size = [deviceItem.deviceValue sizeWithFont:[UIFont systemFontOfSize:20] constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
     
     CGFloat height = MAX(size.height + 11, 44.0f);
     
