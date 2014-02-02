@@ -28,6 +28,9 @@
         
         [self.tableView registerClass:[MDCCell class] forCellReuseIdentifier:@"Cell"];
         
+        //Register KVO
+        [self.logController addObserver:self forKeyPath:@"deviceLogs" options:kNilOptions context:nil];
+        
     }
     return self;
 }
@@ -88,6 +91,15 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+}
+
+#pragma mark - KVO handling
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if([keyPath isEqualToString:@"deviceLogs"]){
+        [self.tableView reloadData];
+    }
 }
 
 @end
