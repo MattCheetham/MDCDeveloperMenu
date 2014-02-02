@@ -21,5 +21,8 @@ typedef enum {
 
 @property (nonatomic, assign) MDCLogLevel logLevel;
 @property (nonatomic, strong) NSString *logContent;
+@property (nonatomic, strong) NSDate *logTime;
+
++ (MDCLog *)logWithLevel:(MDCLogLevel)logLevel content:(NSString *)logContent;
 
 @end

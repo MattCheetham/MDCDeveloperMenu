@@ -10,4 +10,14 @@
 
 @implementation MDCLog
 
++ (MDCLog *)logWithLevel:(MDCLogLevel)logLevel content:(NSString *)logContent
+{
+    MDCLog *log = [MDCLog new];
+    log.logLevel = logLevel;
+    log.logContent = logContent;
+    log.logTime = [NSDate date];
+    
+    return log;
+}
+
 @end
