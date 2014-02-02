@@ -10,4 +10,12 @@
 
 @implementation MDCDeviceInformationItem
 
++ (MDCDeviceInformationItem *)itemWithProperty:(NSString *)deviceProperty value:(NSString *)deviceValue
+{
+    MDCDeviceInformationItem *deviceInfo = [MDCDeviceInformationItem new];
+    deviceInfo.deviceProperty = deviceProperty;
+    deviceInfo.deviceValue = deviceValue;
+    
+    return deviceInfo;
+}
 @end
