@@ -10,12 +10,21 @@
 
 @implementation MDCLog
 
-+ (MDCLog *)logWithLevel:(MDCLogLevel)logLevel content:(NSString *)logContent
++ (MDCLog *)logWithContent:(NSString *)logContent content:(MDCLogLevel)logLevel
 {
     MDCLog *log = [MDCLog new];
     log.logLevel = logLevel;
     log.logContent = logContent;
     log.logTime = [NSDate date];
+    
+    //This is called to ensure that we see the logs in our console
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        asl_add_log_file(NULL, STDERR_FILENO);
+    });
+    
+    //Print log
+    asl_log(NULL, NULL, logLevel, "%s", [logContent UTF8String]);
     
     return log;
 }

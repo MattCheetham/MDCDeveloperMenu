@@ -6,15 +6,17 @@
 //  Copyright (c) 2014 Matthew Cheetham. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#include <asl.h>
 
 typedef enum {
-    MDCLogLevelTrace = 0,
-    MDCLogLevelDebug = 1,
-    MDCLogLevelInfo = 2,
-    MDCLogLevelWarn = 3,
-    MDCLogLevelError = 4,
-    MDCLogLevelFatal = 5
+    MDCLogLevelEmerg = ASL_LEVEL_EMERG,
+    MDCLogLevelAlert = ASL_LEVEL_ALERT,
+    MDCLogLevelCrit = ASL_LEVEL_CRIT,
+    MDCLogLevelErr = ASL_LEVEL_ERR,
+    MDCLogLevelWarning = ASL_LEVEL_WARNING,
+    MDCLogLevelNotice = ASL_LEVEL_NOTICE,
+    MDCLogLevelInfo = ASL_LEVEL_INFO,
+    MDCLogLevelDebug = ASL_LEVEL_DEBUG
 } MDCLogLevel;
 
 @interface MDCLog : NSObject
@@ -23,6 +25,6 @@ typedef enum {
 @property (nonatomic, strong) NSString *logContent;
 @property (nonatomic, strong) NSDate *logTime;
 
-+ (MDCLog *)logWithLevel:(MDCLogLevel)logLevel content:(NSString *)logContent;
++ (MDCLog *)logWithContent:(NSString *)logContent content:(MDCLogLevel)logLevel;
 
 @end
