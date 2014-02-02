@@ -34,14 +34,14 @@ MDCLogEmerg
 The highest priority, usually reserved for catastrophic failures and reboot notices.
 */
 
-#define MDCLogDebug(string) [[MDCLogController sharedController] addLog:(string) withLevel:MDCLogLevelDebug];
-#define MDCLogInfo(string) [[MDCLogController sharedController] addLog:(string) withLevel:MDCLogLevelInfo];
-#define MDCLogNotice(string) [[MDCLogController sharedController] addLog:(string) withLevel:MDCLogLevelNotice];
-#define MDCLogWarning(string) [[MDCLogController sharedController] addLog:(string) withLevel:MDCLogLevelWarning];
-#define MDCLogErr(string) [[MDCLogController sharedController] addLog:(string) withLevel:MDCLogLevelErr];
-#define MDCLogCrit(string) [[MDCLogController sharedController] addLog:(string) withLevel:MDCLogLevelCrit];
-#define MDCLogAlert(string) [[MDCLogController sharedController] addLog:(string) withLevel:MDCLogLevelAlert];
-#define MDCLogEmerg(string) [[MDCLogController sharedController] addLog:(string) withLevel:MDCLogLevelEmerg];
+#define MDCLogDebug(format, ...) [[MDCLogController sharedController] addLogWithLevel:MDCLogLevelDebug logContent:format, ##__VA_ARGS__];
+#define MDCLogInfo(format, ...) [[MDCLogController sharedController] addLogWithLevel:MDCLogLevelInfo logContent:format, ##__VA_ARGS__];
+#define MDCLogNotice(format, ...) [[MDCLogController sharedController] addLogWithLevel:MDCLogLevelNotice logContent:format, ##__VA_ARGS__];
+#define MDCLogWarning(format, ...) [[MDCLogController sharedController] addLogWithLevel:MDCLogLevelWarning logContent:format, ##__VA_ARGS__];
+#define MDCLogErr(format, ...) [[MDCLogController sharedController] addLogWithLevel:MDCLogLevelErr logContent:format, ##__VA_ARGS__];
+#define MDCLogCrit(format, ...) [[MDCLogController sharedController] addLogWithLevel:MDCLogLevelCrit logContent:format, ##__VA_ARGS__];
+#define MDCLogAlert(format, ...) [[MDCLogController sharedController] addLogWithLevel:MDCLogLevelAlert logContent:format, ##__VA_ARGS__];
+#define MDCLogEmerg(format, ...) [[MDCLogController sharedController] addLogWithLevel:MDCLogLevelEmerg logContent:format, ##__VA_ARGS__];
 
 
 @interface MDCLogController : NSObject
@@ -50,6 +50,5 @@ The highest priority, usually reserved for catastrophic failures and reboot noti
 
 + (MDCLogController *)sharedController;
 
-- (void)addLog:(NSString *)logContent withLevel:(MDCLogLevel)logLevel;
-
+- (void)addLogWithLevel:(MDCLogLevel)logLevel logContent:(NSString *)logContent, ...;
 @end

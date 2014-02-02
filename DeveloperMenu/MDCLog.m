@@ -22,9 +22,7 @@
     dispatch_once(&onceToken, ^{
         asl_add_log_file(NULL, STDERR_FILENO);
     });
-    
-    NSLog(@"Hey");
-    
+        
     //Print log
     asl_log(NULL, NULL, logLevel, "%s", [logContent UTF8String]);
     
