@@ -39,12 +39,18 @@ static MDCDeviceInformationController *sharedController = nil;
         
         [self populateDeviceInformation];
         
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(populateDeviceInformation) name:UIDeviceBatteryLevelDidChangeNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(populateDeviceInformation) name:UIDeviceBatteryStateDidChangeNotification object:nil];
+        
     }
     return self;
 }
 
 - (void)populateDeviceInformation
 {
+    [self willChangeValueForKey:@"deviceInformationItems"];
+    [self.deviceInformationItems removeAllObjects];
+    
     MDCDeviceInformationItem *deviceName = [MDCDeviceInformationItem itemWithProperty:@"Name" value:self.currentDevice.name];
     MDCDeviceInformationItem *deviceMultiTaskingSupport = [MDCDeviceInformationItem itemWithProperty:@"Multitasking Supported" value:self.currentDevice.multitaskingSupported ? @"Yes" : @"No"];
     MDCDeviceInformationItem *deviceSystemName = [MDCDeviceInformationItem itemWithProperty:@"System Name" value:self.currentDevice.systemName];
@@ -59,6 +65,7 @@ static MDCDeviceInformationController *sharedController = nil;
     MDCDeviceInformationItem *deviceBatteryState = [MDCDeviceInformationItem itemWithProperty:@"Battery State" value:[self stringForBatteryState:self.currentDevice.batteryState]];
         
     [self.deviceInformationItems addObjectsFromArray:@[deviceName, deviceMultiTaskingSupport, deviceSystemName, deviceSystemVersion, deviceModel, deviceIdentifierForVendor, deviceBatteryLevel, deviceBatteryState]];
+    [self didChangeValueForKey:@"deviceInformationItems"];
 }
 
 - (NSString *)stringForBatteryState:(UIDeviceBatteryState)batteryState

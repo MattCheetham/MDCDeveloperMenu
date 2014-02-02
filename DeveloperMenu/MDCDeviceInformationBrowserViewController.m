@@ -30,6 +30,8 @@
         
         [self.tableView registerClass:[MDCCell class] forCellReuseIdentifier:@"Cell"];
         
+        [self.deviceInformationController addObserver:self forKeyPath:@"deviceInformationItems" options:kNilOptions context:0];
+        
     }
     return self;
 }
@@ -90,6 +92,15 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+}
+
+#pragma mark - KVO handling
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if([keyPath isEqualToString:@"deviceInformationItems"]){
+        [self.tableView reloadData];
+    }
 }
 
 @end
