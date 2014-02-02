@@ -10,6 +10,9 @@
 		330ED02A189C0E35001AF047 /* MDCUserDefaultsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 330ED029189C0E35001AF047 /* MDCUserDefaultsController.m */; };
 		330ED02D189C0EE4001AF047 /* MDCUserDefaultItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 330ED02C189C0EE4001AF047 /* MDCUserDefaultItem.m */; };
 		330ED030189C10C8001AF047 /* MDCUserDefaultsBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 330ED02F189C10C8001AF047 /* MDCUserDefaultsBrowserViewController.m */; };
+		335EB8F7189EE4ED0014FBCC /* MDCDeviceInformationBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 335EB8F6189EE4ED0014FBCC /* MDCDeviceInformationBrowserViewController.m */; };
+		335EB8FA189EE5440014FBCC /* MDCDeviceInformationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 335EB8F9189EE5440014FBCC /* MDCDeviceInformationController.m */; };
+		335EB8FD189EE5630014FBCC /* MDCDeviceInformationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 335EB8FC189EE5630014FBCC /* MDCDeviceInformationItem.m */; };
 		33A61836188A756E007D5701 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A61835188A756E007D5701 /* Foundation.framework */; };
 		33A61838188A756E007D5701 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A61837188A756E007D5701 /* CoreGraphics.framework */; };
 		33A6183A188A756E007D5701 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A61839188A756E007D5701 /* UIKit.framework */; };
@@ -51,6 +54,12 @@
 		330ED02C189C0EE4001AF047 /* MDCUserDefaultItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCUserDefaultItem.m; sourceTree = "<group>"; };
 		330ED02E189C10C8001AF047 /* MDCUserDefaultsBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCUserDefaultsBrowserViewController.h; sourceTree = "<group>"; };
 		330ED02F189C10C8001AF047 /* MDCUserDefaultsBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCUserDefaultsBrowserViewController.m; sourceTree = "<group>"; };
+		335EB8F5189EE4ED0014FBCC /* MDCDeviceInformationBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCDeviceInformationBrowserViewController.h; sourceTree = "<group>"; };
+		335EB8F6189EE4ED0014FBCC /* MDCDeviceInformationBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCDeviceInformationBrowserViewController.m; sourceTree = "<group>"; };
+		335EB8F8189EE5440014FBCC /* MDCDeviceInformationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCDeviceInformationController.h; sourceTree = "<group>"; };
+		335EB8F9189EE5440014FBCC /* MDCDeviceInformationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCDeviceInformationController.m; sourceTree = "<group>"; };
+		335EB8FB189EE5630014FBCC /* MDCDeviceInformationItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCDeviceInformationItem.h; sourceTree = "<group>"; };
+		335EB8FC189EE5630014FBCC /* MDCDeviceInformationItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCDeviceInformationItem.m; sourceTree = "<group>"; };
 		33A61832188A756E007D5701 /* DeveloperMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeveloperMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33A61835188A756E007D5701 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		33A61837188A756E007D5701 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -191,6 +200,8 @@
 		33A61867188A7613007D5701 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				335EB8F5189EE4ED0014FBCC /* MDCDeviceInformationBrowserViewController.h */,
+				335EB8F6189EE4ED0014FBCC /* MDCDeviceInformationBrowserViewController.m */,
 				33FBCF81189E76E4001130EC /* MDCLogBrowserViewController.h */,
 				33FBCF82189E76E4001130EC /* MDCLogBrowserViewController.m */,
 				330ED02E189C10C8001AF047 /* MDCUserDefaultsBrowserViewController.h */,
@@ -217,6 +228,8 @@
 		33A61869188A7625007D5701 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				335EB8FB189EE5630014FBCC /* MDCDeviceInformationItem.h */,
+				335EB8FC189EE5630014FBCC /* MDCDeviceInformationItem.m */,
 				33FBCF7E189E60D4001130EC /* MDCLog.h */,
 				33FBCF7F189E60D4001130EC /* MDCLog.m */,
 				330ED02B189C0EE4001AF047 /* MDCUserDefaultItem.h */,
@@ -230,6 +243,8 @@
 		33A6186A188A762A007D5701 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				335EB8F8189EE5440014FBCC /* MDCDeviceInformationController.h */,
+				335EB8F9189EE5440014FBCC /* MDCDeviceInformationController.m */,
 				33FBCF7B189E6032001130EC /* MDCLogController.h */,
 				33FBCF7C189E6032001130EC /* MDCLogController.m */,
 				330ED028189C0E35001AF047 /* MDCUserDefaultsController.h */,
@@ -345,9 +360,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				335EB8FA189EE5440014FBCC /* MDCDeviceInformationController.m in Sources */,
 				33C66B53189AFF91007E0C36 /* MDCPlistItem.m in Sources */,
 				330ED02A189C0E35001AF047 /* MDCUserDefaultsController.m in Sources */,
 				330ED02D189C0EE4001AF047 /* MDCUserDefaultItem.m in Sources */,
+				335EB8FD189EE5630014FBCC /* MDCDeviceInformationItem.m in Sources */,
+				335EB8F7189EE4ED0014FBCC /* MDCDeviceInformationBrowserViewController.m in Sources */,
 				330ED030189C10C8001AF047 /* MDCUserDefaultsBrowserViewController.m in Sources */,
 				33A61842188A756E007D5701 /* main.m in Sources */,
 				33C66B4D189AEF3B007E0C36 /* MDCPlistBrowserViewController.m in Sources */,
