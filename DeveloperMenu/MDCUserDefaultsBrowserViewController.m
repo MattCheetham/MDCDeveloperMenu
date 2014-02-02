@@ -7,7 +7,7 @@
 //
 
 #import "MDCUserDefaultsBrowserViewController.h"
-#import "MDCPlistItemCell.h"
+#import "MDCCell.h"
 #import "MDCUserDefaultItem.h"
 #import "MDCUserDefaultsController.h"
 
@@ -32,7 +32,7 @@
         
         self.userDefaultsItems = items;
         
-        [self.tableView registerClass:[MDCPlistItemCell class] forCellReuseIdentifier:@"Cell"];
+        [self.tableView registerClass:[MDCCell class] forCellReuseIdentifier:@"Cell"];
         
         [[MDCUserDefaultsController sharedController] addObserver:self forKeyPath:@"userDefaultsItems" options:kNilOptions context:nil];
         
@@ -65,7 +65,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    MDCPlistItemCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    MDCCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     cell.textLabel.numberOfLines = 0;
     cell.accessoryType = UITableViewCellAccessoryNone;
     

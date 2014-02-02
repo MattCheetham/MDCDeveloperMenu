@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MDCPlistItemCell : UITableViewCell
+@interface MDCCell : UITableViewCell
 
 @end

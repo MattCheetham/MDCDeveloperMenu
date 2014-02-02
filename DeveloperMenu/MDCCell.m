@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Matthew Cheetham. All rights reserved.
 //
 
-#import "MDCPlistItemCell.h"
+#import "MDCCell.h"
 
-@implementation MDCPlistItemCell
+@implementation MDCCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
