@@ -20,6 +20,8 @@
 
 @interface MDCLogController : NSObject
 
+@property (nonatomic, strong) NSMutableArray *deviceLogs;
+
 + (MDCLogController *)sharedController;
 
 - (void)addLog:(NSString *)logContent withLevel:(MDCLogLevel)logLevel;

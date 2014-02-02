@@ -31,6 +31,7 @@
 		33C66B56189B0041007E0C36 /* MDCPlistController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33C66B55189B0041007E0C36 /* MDCPlistController.m */; };
 		33FBCF7D189E6032001130EC /* MDCLogController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33FBCF7C189E6032001130EC /* MDCLogController.m */; };
 		33FBCF80189E60D4001130EC /* MDCLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 33FBCF7F189E60D4001130EC /* MDCLog.m */; };
+		33FBCF83189E76E4001130EC /* MDCLogBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33FBCF82189E76E4001130EC /* MDCLogBrowserViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,8 @@
 		33FBCF7C189E6032001130EC /* MDCLogController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCLogController.m; sourceTree = "<group>"; };
 		33FBCF7E189E60D4001130EC /* MDCLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCLog.h; sourceTree = "<group>"; };
 		33FBCF7F189E60D4001130EC /* MDCLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCLog.m; sourceTree = "<group>"; };
+		33FBCF81189E76E4001130EC /* MDCLogBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCLogBrowserViewController.h; sourceTree = "<group>"; };
+		33FBCF82189E76E4001130EC /* MDCLogBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCLogBrowserViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +191,8 @@
 		33A61867188A7613007D5701 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				33FBCF81189E76E4001130EC /* MDCLogBrowserViewController.h */,
+				33FBCF82189E76E4001130EC /* MDCLogBrowserViewController.m */,
 				330ED02E189C10C8001AF047 /* MDCUserDefaultsBrowserViewController.h */,
 				330ED02F189C10C8001AF047 /* MDCUserDefaultsBrowserViewController.m */,
 				33C66B4B189AEF3B007E0C36 /* MDCPlistBrowserViewController.h */,
@@ -352,6 +357,7 @@
 				33A6186D188A7741007D5701 /* MDCDeveloperMenuViewController.m in Sources */,
 				33A61846188A756E007D5701 /* MDCAppDelegate.m in Sources */,
 				33FBCF7D189E6032001130EC /* MDCLogController.m in Sources */,
+				33FBCF83189E76E4001130EC /* MDCLogBrowserViewController.m in Sources */,
 				33C66B49189AEE5D007E0C36 /* MDCValueConverter.m in Sources */,
 				33C66B56189B0041007E0C36 /* MDCPlistController.m in Sources */,
 			);

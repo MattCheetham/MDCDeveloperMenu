@@ -10,8 +10,6 @@
 
 @interface MDCLogController ()
 
-@property (nonatomic, strong) NSMutableArray *deviceLogs;
-
 @end
 
 @implementation MDCLogController
