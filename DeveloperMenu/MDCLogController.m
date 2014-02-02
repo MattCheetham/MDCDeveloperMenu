@@ -41,7 +41,7 @@ static MDCLogController *sharedController = nil;
 
 - (void)addLog:(NSString *)logContent withLevel:(MDCLogLevel)logLevel
 {
-    MDCLog *log = [MDCLog logWithLevel:logLevel content:logContent];
+    MDCLog *log = [MDCLog logWithContent:logContent content:logLevel];
     [self.deviceLogs addObject:log];
 }
 
