@@ -12,4 +12,6 @@
 
 @property (nonatomic, strong) NSMutableArray *deviceInformationItems;
 
++ (MDCDeviceInformationController *)sharedController;
+
 @end
