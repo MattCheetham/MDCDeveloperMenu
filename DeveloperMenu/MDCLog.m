@@ -29,4 +29,43 @@
     return log;
 }
 
+- (NSString *)logContentWithLevelPrefix
+{
+    return [NSString stringWithFormat:@"<%@>: %@", [self stringForLogLevel:self.logLevel], self.logContent];
+}
+
+- (NSString *)stringForLogLevel:(MDCLogLevel)level
+{
+    switch (level) {
+        case MDCLogLevelAlert:
+            return @"Alert";
+            break;
+        case MDCLogLevelCrit:
+            return @"Critical";
+            break;
+        case MDCLogLevelDebug:
+            return @"Debug";
+            break;
+        case MDCLogLevelEmerg:
+            return @"Emergency";
+            break;
+        case MDCLogLevelErr:
+            return @"Error";
+            break;
+        case MDCLogLevelInfo:
+            return @"Information";
+            break;
+        case MDCLogLevelNotice:
+            return @"Notice";
+            break;
+        case MDCLogLevelWarning:
+            return @"Warning";
+            break;
+            
+        default:
+            return @"Unknown";
+            break;
+    }
+}
+
 @end

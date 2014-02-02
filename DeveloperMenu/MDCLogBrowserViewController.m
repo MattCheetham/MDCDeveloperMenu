@@ -65,7 +65,7 @@
     
     MDCLog *log = self.logController.deviceLogs[indexPath.row];
     
-    cell.textLabel.text = log.logContent;
+    cell.textLabel.text = [log logContentWithLevelPrefix];
     cell.detailTextLabel.text = [log.logTime descriptionWithLocale:[NSLocale currentLocale]];
     
     return cell;

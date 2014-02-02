@@ -26,5 +26,6 @@ typedef enum {
 @property (nonatomic, strong) NSDate *logTime;
 
 + (MDCLog *)logWithContent:(NSString *)logContent content:(MDCLogLevel)logLevel;
+- (NSString *)logContentWithLevelPrefix;
 
 @end
