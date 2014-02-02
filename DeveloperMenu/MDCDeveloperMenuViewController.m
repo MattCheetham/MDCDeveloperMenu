@@ -9,6 +9,8 @@
 #import "MDCDeveloperMenuViewController.h"
 #import "MDCPlistBrowserViewController.h"
 #import "MDCPlistController.h"
+#import "MDCUserDefaultsBrowserViewController.h"
+#import "MDCUserDefaultsController.h"
 
 @interface MDCDeveloperMenuViewController ()
 
@@ -70,7 +72,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -78,10 +80,15 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     cell.textLabel.numberOfLines = 0;
-    
-    // Configure the cell...
-    cell.textLabel.text = @"View plist";
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+
+    // Configure the cell...
+    
+    if(indexPath.row == 0){
+        cell.textLabel.text = @"View plist";
+    } else if(indexPath.row == 1){
+        cell.textLabel.text = @"View NSUserDefaults";
+    }
     
     return cell;
 }
@@ -105,9 +112,19 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    MDCPlistBrowserViewController *plistBrowser = [[MDCPlistBrowserViewController alloc] initWithPlistItems:[MDCPlistController sharedController].plistItems];
+    if(indexPath.row == 0){
 
-    [self.navigationController pushViewController:plistBrowser animated:YES];
+        MDCPlistBrowserViewController *plistBrowser = [[MDCPlistBrowserViewController alloc] initWithPlistItems:[MDCPlistController sharedController].plistItems];
+
+        [self.navigationController pushViewController:plistBrowser animated:YES];
+        
+    } else if(indexPath.row == 1){
+
+        MDCUserDefaultsBrowserViewController *defaultsBrowser = [[MDCUserDefaultsBrowserViewController alloc] initWithUserDefaultsItems:[MDCUserDefaultsController sharedController].userDefaultsItems];
+        
+        [self.navigationController pushViewController:defaultsBrowser animated:YES];
+        
+    }
 }
 
 @end
