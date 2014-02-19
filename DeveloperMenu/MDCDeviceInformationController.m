@@ -10,6 +10,7 @@
 #import "MDCDeviceInformationItem.h"
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <CoreTelephony/CTCarrier.h>
+#import <SystemConfiguration/CaptiveNetwork.h>
 
 @interface MDCDeviceInformationController ()
 
