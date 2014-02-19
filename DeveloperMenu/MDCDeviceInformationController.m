@@ -8,6 +8,7 @@
 
 #import "MDCDeviceInformationController.h"
 #import "MDCDeviceInformationItem.h"
+#import <CoreTelephony/CTTelephonyNetworkInfo.h>
 
 @interface MDCDeviceInformationController ()
 
