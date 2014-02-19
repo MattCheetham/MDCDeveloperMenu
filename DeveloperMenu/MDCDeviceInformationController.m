@@ -9,6 +9,7 @@
 #import "MDCDeviceInformationController.h"
 #import "MDCDeviceInformationItem.h"
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
+#import <CoreTelephony/CTCarrier.h>
 
 @interface MDCDeviceInformationController ()
 
@@ -70,7 +71,9 @@ static MDCDeviceInformationController *sharedController = nil;
     CTTelephonyNetworkInfo *telephonyInfo = [CTTelephonyNetworkInfo new];
     MDCDeviceInformationItem *deviceNetworkSpeed = [MDCDeviceInformationItem itemWithProperty:@"Network Speed" value:[self localisedStringForNetworkSpeed:telephonyInfo.currentRadioAccessTechnology]];
 
-    [self.deviceInformationItems addObjectsFromArray:@[deviceName, deviceMultiTaskingSupport, deviceSystemName, deviceSystemVersion, deviceModel, deviceIdentifierForVendor, deviceBatteryLevel, deviceBatteryState, deviceNetworkSpeed]];
+    CTCarrier *carrierInfo = telephonyInfo.subscriberCellularProvider;
+    MDCDeviceInformationItem *deviceCarrierName = [MDCDeviceInformationItem itemWithProperty:@"Carrier" value:carrierInfo.carrierName];
+    [self.deviceInformationItems addObjectsFromArray:@[deviceName, deviceMultiTaskingSupport, deviceSystemName, deviceSystemVersion, deviceModel, deviceIdentifierForVendor, deviceBatteryLevel, deviceBatteryState, deviceNetworkSpeed, deviceCarrierName]];
     [self didChangeValueForKey:@"deviceInformationItems"];
 }
 
