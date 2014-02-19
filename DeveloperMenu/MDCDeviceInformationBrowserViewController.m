@@ -50,12 +50,17 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return self.deviceInformationController.deviceInformationCategoryKeys.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.deviceInformationController.deviceInformationItems.count;
+    return [self.deviceInformationController deviceInformationitemsForSectionIndex:section].count;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return [self.deviceInformationController deviceInformationCategoryKeyForSection:section];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -67,7 +72,7 @@
     
     // Configure the cell...
     
-    MDCDeviceInformationItem *deviceItem = self.deviceInformationController.deviceInformationItems[indexPath.row];
+    MDCDeviceInformationItem *deviceItem = [self.deviceInformationController deviceInformationitemsForSectionIndex:indexPath.section][indexPath.row];
     
     cell.textLabel.text = deviceItem.deviceValue;
     cell.detailTextLabel.text = deviceItem.deviceProperty;
