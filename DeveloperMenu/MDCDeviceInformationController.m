@@ -15,6 +15,7 @@
 @interface MDCDeviceInformationController ()
 
 @property (nonatomic, strong) UIDevice *currentDevice;
+@property (nonatomic, strong) CTTelephonyNetworkInfo *telephonyInfo;
 
 @end
 
@@ -39,6 +40,7 @@ static MDCDeviceInformationController *sharedController = nil;
         
         self.deviceInformationItems = [NSMutableArray array];
         self.currentDevice = [UIDevice currentDevice];
+        self.telephonyInfo = [CTTelephonyNetworkInfo new];
         
         [self populateDeviceInformation];
         
@@ -68,12 +70,11 @@ static MDCDeviceInformationController *sharedController = nil;
     MDCDeviceInformationItem *deviceBatteryLevel = [MDCDeviceInformationItem itemWithProperty:@"Battery Level" value:[NSString stringWithFormat:@"%.0f%%", self.currentDevice.batteryLevel * 100]];
     MDCDeviceInformationItem *deviceBatteryState = [MDCDeviceInformationItem itemWithProperty:@"Battery State" value:[self stringForBatteryState:self.currentDevice.batteryState]];
     
-    //Carrier information [Also register to check if it updates and refresh];
-    CTTelephonyNetworkInfo *telephonyInfo = [CTTelephonyNetworkInfo new];
-    CTCarrier *carrierInfo = telephonyInfo.subscriberCellularProvider;
+    //Carrier information
+    CTCarrier *carrierInfo = self.telephonyInfo.subscriberCellularProvider;
     
     MDCDeviceInformationItem *deviceCarrierName = [MDCDeviceInformationItem itemWithProperty:@"Carrier" value:carrierInfo.carrierName];
-    MDCDeviceInformationItem *deviceNetworkSpeed = [MDCDeviceInformationItem itemWithProperty:@"Network Speed" value:[self localisedStringForNetworkSpeed:telephonyInfo.currentRadioAccessTechnology]];
+    MDCDeviceInformationItem *deviceNetworkSpeed = [MDCDeviceInformationItem itemWithProperty:@"Network Speed" value:[self localisedStringForNetworkSpeed:self.telephonyInfo.currentRadioAccessTechnology]];
     MDCDeviceInformationItem *deviceVOIPEnabled = [MDCDeviceInformationItem itemWithProperty:@"VOIP Allowed" value:carrierInfo.allowsVOIP ? @"Yes" : @"No"];
     
     [self.deviceInformationItems addObjectsFromArray:@[deviceName, deviceMultiTaskingSupport, deviceSystemName, deviceSystemVersion, deviceModel, deviceIdentifierForVendor, deviceBatteryLevel, deviceBatteryState, deviceCarrierName, deviceNetworkSpeed, deviceVOIPEnabled]];
