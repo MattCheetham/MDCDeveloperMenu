@@ -69,11 +69,13 @@ static MDCDeviceInformationController *sharedController = nil;
     
     //Carrier information [Also register to check if it updates and refresh];
     CTTelephonyNetworkInfo *telephonyInfo = [CTTelephonyNetworkInfo new];
-    MDCDeviceInformationItem *deviceNetworkSpeed = [MDCDeviceInformationItem itemWithProperty:@"Network Speed" value:[self localisedStringForNetworkSpeed:telephonyInfo.currentRadioAccessTechnology]];
-
     CTCarrier *carrierInfo = telephonyInfo.subscriberCellularProvider;
+    
     MDCDeviceInformationItem *deviceCarrierName = [MDCDeviceInformationItem itemWithProperty:@"Carrier" value:carrierInfo.carrierName];
-    [self.deviceInformationItems addObjectsFromArray:@[deviceName, deviceMultiTaskingSupport, deviceSystemName, deviceSystemVersion, deviceModel, deviceIdentifierForVendor, deviceBatteryLevel, deviceBatteryState, deviceNetworkSpeed, deviceCarrierName]];
+    MDCDeviceInformationItem *deviceNetworkSpeed = [MDCDeviceInformationItem itemWithProperty:@"Network Speed" value:[self localisedStringForNetworkSpeed:telephonyInfo.currentRadioAccessTechnology]];
+    MDCDeviceInformationItem *deviceVOIPEnabled = [MDCDeviceInformationItem itemWithProperty:@"VOIP Allowed" value:carrierInfo.allowsVOIP ? @"Yes" : @"No"];
+    
+    [self.deviceInformationItems addObjectsFromArray:@[deviceName, deviceMultiTaskingSupport, deviceSystemName, deviceSystemVersion, deviceModel, deviceIdentifierForVendor, deviceBatteryLevel, deviceBatteryState, deviceCarrierName, deviceNetworkSpeed, deviceVOIPEnabled]];
     [self didChangeValueForKey:@"deviceInformationItems"];
 }
 
