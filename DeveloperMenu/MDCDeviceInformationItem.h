@@ -12,7 +12,8 @@
 
 @property (nonatomic, strong) NSString *deviceProperty;
 @property (nonatomic, strong) NSString *deviceValue;
+@property (nonatomic, strong) NSString *devicePropertyCategory;
 
-+ (MDCDeviceInformationItem *)itemWithProperty:(NSString *)deviceProperty value:(NSString *)deviceValue;
++ (MDCDeviceInformationItem *)itemWithProperty:(NSString *)deviceProperty value:(NSString *)deviceValue category:(NSString *)devicePropertyCategory;
 
 @end

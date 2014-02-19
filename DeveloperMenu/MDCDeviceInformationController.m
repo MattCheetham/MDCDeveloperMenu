@@ -64,25 +64,25 @@ static MDCDeviceInformationController *sharedController = nil;
     [self willChangeValueForKey:@"deviceInformationItems"];
     [self.deviceInformationItems removeAllObjects];
     
-    MDCDeviceInformationItem *deviceName = [MDCDeviceInformationItem itemWithProperty:@"Name" value:self.currentDevice.name];
-    MDCDeviceInformationItem *deviceMultiTaskingSupport = [MDCDeviceInformationItem itemWithProperty:@"Multitasking Supported" value:self.currentDevice.multitaskingSupported ? @"Yes" : @"No"];
-    MDCDeviceInformationItem *deviceSystemName = [MDCDeviceInformationItem itemWithProperty:@"System Name" value:self.currentDevice.systemName];
-    MDCDeviceInformationItem *deviceSystemVersion = [MDCDeviceInformationItem itemWithProperty:@"System Version" value:self.currentDevice.systemVersion];
-    MDCDeviceInformationItem *deviceModel = [MDCDeviceInformationItem itemWithProperty:@"Model" value:self.currentDevice.model];
-    MDCDeviceInformationItem *deviceIdentifierForVendor = [MDCDeviceInformationItem itemWithProperty:@"Identifier For Vendor" value:self.currentDevice.identifierForVendor.UUIDString];
+    MDCDeviceInformationItem *deviceName = [MDCDeviceInformationItem itemWithProperty:@"Name" value:self.currentDevice.name category:@"General"];
+    MDCDeviceInformationItem *deviceMultiTaskingSupport = [MDCDeviceInformationItem itemWithProperty:@"Multitasking Supported" value:self.currentDevice.multitaskingSupported ? @"Yes" : @"No" category:@"General"];
+    MDCDeviceInformationItem *deviceSystemName = [MDCDeviceInformationItem itemWithProperty:@"System Name" value:self.currentDevice.systemName category:@"General"];
+    MDCDeviceInformationItem *deviceSystemVersion = [MDCDeviceInformationItem itemWithProperty:@"System Version" value:self.currentDevice.systemVersion category:@"General"];
+    MDCDeviceInformationItem *deviceModel = [MDCDeviceInformationItem itemWithProperty:@"Model" value:self.currentDevice.model category:@"General"];
+    MDCDeviceInformationItem *deviceIdentifierForVendor = [MDCDeviceInformationItem itemWithProperty:@"Identifier For Vendor" value:self.currentDevice.identifierForVendor.UUIDString category:@"General"];
     
     //Enable battery monitoring
     self.currentDevice.batteryMonitoringEnabled = YES;
     
-    MDCDeviceInformationItem *deviceBatteryLevel = [MDCDeviceInformationItem itemWithProperty:@"Battery Level" value:[NSString stringWithFormat:@"%.0f%%", self.currentDevice.batteryLevel * 100]];
-    MDCDeviceInformationItem *deviceBatteryState = [MDCDeviceInformationItem itemWithProperty:@"Battery State" value:[self stringForBatteryState:self.currentDevice.batteryState]];
+    MDCDeviceInformationItem *deviceBatteryLevel = [MDCDeviceInformationItem itemWithProperty:@"Battery Level" value:[NSString stringWithFormat:@"%.0f%%", self.currentDevice.batteryLevel * 100] category:@"Battery"];
+    MDCDeviceInformationItem *deviceBatteryState = [MDCDeviceInformationItem itemWithProperty:@"Battery State" value:[self stringForBatteryState:self.currentDevice.batteryState] category:@"Battery"];
     
     //Carrier information
     CTCarrier *carrierInfo = self.telephonyInfo.subscriberCellularProvider;
     
-    MDCDeviceInformationItem *deviceCarrierName = [MDCDeviceInformationItem itemWithProperty:@"Carrier" value:carrierInfo.carrierName];
-    MDCDeviceInformationItem *deviceNetworkSpeed = [MDCDeviceInformationItem itemWithProperty:@"Network Speed" value:[self localisedStringForNetworkSpeed:self.telephonyInfo.currentRadioAccessTechnology]];
-    MDCDeviceInformationItem *deviceVOIPEnabled = [MDCDeviceInformationItem itemWithProperty:@"VOIP Allowed" value:carrierInfo.allowsVOIP ? @"Yes" : @"No"];
+    MDCDeviceInformationItem *deviceCarrierName = [MDCDeviceInformationItem itemWithProperty:@"Carrier" value:carrierInfo.carrierName category:@"General"];
+    MDCDeviceInformationItem *deviceNetworkSpeed = [MDCDeviceInformationItem itemWithProperty:@"Network Speed" value:[self localisedStringForNetworkSpeed:self.telephonyInfo.currentRadioAccessTechnology] category:@"General"];
+    MDCDeviceInformationItem *deviceVOIPEnabled = [MDCDeviceInformationItem itemWithProperty:@"VOIP Allowed" value:carrierInfo.allowsVOIP ? @"Yes" : @"No" category:@"General"];
     
     [self.deviceInformationItems addObjectsFromArray:@[deviceName, deviceMultiTaskingSupport, deviceSystemName, deviceSystemVersion, deviceModel, deviceIdentifierForVendor, deviceBatteryLevel, deviceBatteryState, deviceCarrierName, deviceNetworkSpeed, deviceVOIPEnabled]];
     
@@ -93,8 +93,8 @@ static MDCDeviceInformationController *sharedController = nil;
     CFDictionaryRef networkDetails = CNCopyCurrentNetworkInfo((CFStringRef) CFBridgingRetain(interface));
     if (networkDetails) {
         NSDictionary *networkInfo = (NSDictionary *)CFBridgingRelease(networkDetails);
-        MDCDeviceInformationItem *deviceWifiSSID = [MDCDeviceInformationItem itemWithProperty:@"SSID" value:networkInfo[@"SSID"]];
-        MDCDeviceInformationItem *deviceWifiBSSID = [MDCDeviceInformationItem itemWithProperty:@"BSSID" value:networkInfo[@"BSSID"]];
+        MDCDeviceInformationItem *deviceWifiSSID = [MDCDeviceInformationItem itemWithProperty:@"SSID" value:networkInfo[@"SSID"] category:@"General"];
+        MDCDeviceInformationItem *deviceWifiBSSID = [MDCDeviceInformationItem itemWithProperty:@"BSSID" value:networkInfo[@"BSSID"] category:@"General"];
         [self.deviceInformationItems addObjectsFromArray:@[deviceWifiSSID, deviceWifiBSSID]];
     }
     
@@ -128,6 +128,43 @@ static MDCDeviceInformationController *sharedController = nil;
 - (NSString *)localisedStringForNetworkSpeed:(NSString *)currentRadioAccessTechnologyString
 {
     return [currentRadioAccessTechnologyString stringByReplacingOccurrencesOfString:@"CTRadioAccessTechnology" withString:@""];
+}
+
+- (NSArray *)deviceInformationCategoryKeys
+{
+    NSMutableArray *deviceItemKeys = [NSMutableArray array];
+    for (MDCDeviceInformationItem *item in self.deviceInformationItems){
+        
+        if(![deviceItemKeys containsObject:item.devicePropertyCategory]){
+            [deviceItemKeys addObject:item.devicePropertyCategory];
+        }
+        
+    }
+    
+    return deviceItemKeys;
+}
+
+- (NSString *)deviceInformationCategoryKeyForSection:(int)index
+{
+    return [self deviceInformationCategoryKeys][index];
+}
+
+- (NSArray *)deviceInformationitemsForSectionIndex:(int)index
+{
+    NSString *deviceInfoKey = [self deviceInformationCategoryKeys][index];
+    
+    NSMutableArray *deviceItems = [NSMutableArray array];
+    for (MDCDeviceInformationItem *item in self.deviceInformationItems){
+        
+        if([item.devicePropertyCategory isEqualToString:deviceInfoKey]){
+            
+            [deviceItems addObject:item];
+            
+        }
+        
+    }
+    
+    return deviceItems;
 }
 
 @end
