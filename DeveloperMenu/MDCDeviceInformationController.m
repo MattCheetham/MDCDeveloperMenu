@@ -10,6 +10,7 @@
 #import "MDCDeviceInformationItem.h"
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <CoreTelephony/CTCarrier.h>
+#import <SystemConfiguration/CaptiveNetwork.h>
 
 @interface MDCDeviceInformationController ()
 
@@ -76,6 +77,19 @@ static MDCDeviceInformationController *sharedController = nil;
     MDCDeviceInformationItem *deviceVOIPEnabled = [MDCDeviceInformationItem itemWithProperty:@"VOIP Allowed" value:carrierInfo.allowsVOIP ? @"Yes" : @"No"];
     
     [self.deviceInformationItems addObjectsFromArray:@[deviceName, deviceMultiTaskingSupport, deviceSystemName, deviceSystemVersion, deviceModel, deviceIdentifierForVendor, deviceBatteryLevel, deviceBatteryState, deviceCarrierName, deviceNetworkSpeed, deviceVOIPEnabled]];
+    
+    //Wifi information
+    NSArray *networkInterfaces = (id)CFBridgingRelease(CNCopySupportedInterfaces());
+    
+    NSString *interface = networkInterfaces[0];
+    CFDictionaryRef networkDetails = CNCopyCurrentNetworkInfo((CFStringRef) CFBridgingRetain(interface));
+    if (networkDetails) {
+        NSDictionary *networkInfo = (NSDictionary *)CFBridgingRelease(networkDetails);
+        MDCDeviceInformationItem *deviceWifiSSID = [MDCDeviceInformationItem itemWithProperty:@"SSID" value:networkInfo[@"SSID"]];
+        MDCDeviceInformationItem *deviceWifiBSSID = [MDCDeviceInformationItem itemWithProperty:@"BSSID" value:networkInfo[@"BSSID"]];
+        [self.deviceInformationItems addObjectsFromArray:@[deviceWifiSSID, deviceWifiBSSID]];
+    }
+    
     [self didChangeValueForKey:@"deviceInformationItems"];
 }
 

@@ -36,6 +36,7 @@
 		33FBCF80189E60D4001130EC /* MDCLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 33FBCF7F189E60D4001130EC /* MDCLog.m */; };
 		33FBCF83189E76E4001130EC /* MDCLogBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33FBCF82189E76E4001130EC /* MDCLogBrowserViewController.m */; };
 		494442B018B5336D00B74627 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 494442AF18B5336D00B74627 /* CoreTelephony.framework */; };
+		494442B218B55C6800B74627 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 494442B118B55C6800B74627 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		33FBCF81189E76E4001130EC /* MDCLogBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCLogBrowserViewController.h; sourceTree = "<group>"; };
 		33FBCF82189E76E4001130EC /* MDCLogBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCLogBrowserViewController.m; sourceTree = "<group>"; };
 		494442AF18B5336D00B74627 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		494442B118B55C6800B74627 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				494442B218B55C6800B74627 /* SystemConfiguration.framework in Frameworks */,
 				494442B018B5336D00B74627 /* CoreTelephony.framework in Frameworks */,
 				33A61838188A756E007D5701 /* CoreGraphics.framework in Frameworks */,
 				33A6183A188A756E007D5701 /* UIKit.framework in Frameworks */,
@@ -147,6 +150,7 @@
 		33A61834188A756E007D5701 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				494442B118B55C6800B74627 /* SystemConfiguration.framework */,
 				494442AF18B5336D00B74627 /* CoreTelephony.framework */,
 				33A61835188A756E007D5701 /* Foundation.framework */,
 				33A61837188A756E007D5701 /* CoreGraphics.framework */,
