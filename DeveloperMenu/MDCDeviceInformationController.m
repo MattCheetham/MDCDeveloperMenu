@@ -42,6 +42,7 @@ static MDCDeviceInformationController *sharedController = nil;
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(populateDeviceInformation) name:UIDeviceBatteryLevelDidChangeNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(populateDeviceInformation) name:UIDeviceBatteryStateDidChangeNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(populateDeviceInformation) name:CTRadioAccessTechnologyDidChangeNotification object:nil];
         
     }
     return self;
@@ -64,10 +65,16 @@ static MDCDeviceInformationController *sharedController = nil;
     
     MDCDeviceInformationItem *deviceBatteryLevel = [MDCDeviceInformationItem itemWithProperty:@"Battery Level" value:[NSString stringWithFormat:@"%.0f%%", self.currentDevice.batteryLevel * 100]];
     MDCDeviceInformationItem *deviceBatteryState = [MDCDeviceInformationItem itemWithProperty:@"Battery State" value:[self stringForBatteryState:self.currentDevice.batteryState]];
-        
-    [self.deviceInformationItems addObjectsFromArray:@[deviceName, deviceMultiTaskingSupport, deviceSystemName, deviceSystemVersion, deviceModel, deviceIdentifierForVendor, deviceBatteryLevel, deviceBatteryState]];
+    
+    //Carrier information [Also register to check if it updates and refresh];
+    CTTelephonyNetworkInfo *telephonyInfo = [CTTelephonyNetworkInfo new];
+    MDCDeviceInformationItem *deviceNetworkSpeed = [MDCDeviceInformationItem itemWithProperty:@"Network Speed" value:[self localisedStringForNetworkSpeed:telephonyInfo.currentRadioAccessTechnology]];
+
+    [self.deviceInformationItems addObjectsFromArray:@[deviceName, deviceMultiTaskingSupport, deviceSystemName, deviceSystemVersion, deviceModel, deviceIdentifierForVendor, deviceBatteryLevel, deviceBatteryState, deviceNetworkSpeed]];
     [self didChangeValueForKey:@"deviceInformationItems"];
 }
+
+#pragma mark - Convenience methods for conversion
 
 - (NSString *)stringForBatteryState:(UIDeviceBatteryState)batteryState
 {
@@ -89,6 +96,11 @@ static MDCDeviceInformationController *sharedController = nil;
             return @"Unknown";
             break;
     }
+}
+
+- (NSString *)localisedStringForNetworkSpeed:(NSString *)currentRadioAccessTechnologyString
+{
+    return [currentRadioAccessTechnologyString stringByReplacingOccurrencesOfString:@"CTRadioAccessTechnology" withString:@""];
 }
 
 @end
