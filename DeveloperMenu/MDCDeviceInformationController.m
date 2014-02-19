@@ -23,6 +23,13 @@
 
 static MDCDeviceInformationController *sharedController = nil;
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceBatteryLevelDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceBatteryStateDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:CTRadioAccessTechnologyDidChangeNotification object:nil];
+}
+
 + (MDCDeviceInformationController *)sharedController
 {
     @synchronized(self) {
