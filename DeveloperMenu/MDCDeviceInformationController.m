@@ -12,6 +12,8 @@
 #import <CoreTelephony/CTCarrier.h>
 #import <SystemConfiguration/CaptiveNetwork.h>
 #import <sys/utsname.h>
+#include <sys/param.h>
+#include <sys/mount.h>
 
 @interface MDCDeviceInformationController ()
 
@@ -98,6 +100,17 @@ static MDCDeviceInformationController *sharedController = nil;
         MDCDeviceInformationItem *deviceWifiBSSID = [MDCDeviceInformationItem itemWithProperty:@"BSSID" value:networkInfo[@"BSSID"] category:@"Wi-Fi"];
         [self.deviceInformationItems addObjectsFromArray:@[deviceWifiSSID, deviceWifiBSSID]];
     }
+    
+    //Disk usage
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSDictionary *attr = [fm attributesOfFileSystemForPath:@"/" error:nil];
+    unsigned long long freeSpaceInBytes = [attr[NSFileSystemFreeSize] unsignedLongLongValue];
+    unsigned long long totalSpaceInBytes = [attr[NSFileSystemSize] unsignedLongLongValue];
+    
+    MDCDeviceInformationItem *deviceFreeSpace = [MDCDeviceInformationItem itemWithProperty:@"Free Space" value:prettyBytes(freeSpaceInBytes) category:@"Disk Usage"];
+    MDCDeviceInformationItem *deviceTotalSpace = [MDCDeviceInformationItem itemWithProperty:@"Total Space" value:prettyBytes(totalSpaceInBytes) category:@"Disk Usage"];
+    
+    [self.deviceInformationItems addObjectsFromArray:@[deviceFreeSpace, deviceTotalSpace]];
     
     [self didChangeValueForKey:@"deviceInformationItems"];
 }
@@ -216,6 +229,39 @@ static MDCDeviceInformationController *sharedController = nil;
                           };
     
     return deviceNamesByCode[deviceCodeName] ? deviceNamesByCode[deviceCodeName] : deviceCodeName;
+}
+
+- (float)totaldiskSpace {
+    NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    struct statfs tStats;
+    statfs([[paths lastObject] cString], &tStats);
+    float total_space = (float)(tStats.f_blocks * tStats.f_bsize);
+    
+    return total_space;
+}
+
+- (float)remainingDiskSpace {
+    NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    struct statfs tStats;
+    statfs([[paths lastObject] cString], &tStats);
+    float remaining_space = (float)(tStats.f_bfree * tStats.f_bsize);
+    
+    return remaining_space;
+}
+
+static NSString* prettyBytes(uint64_t numBytes)
+{
+    uint64_t const scale = 1024;
+    char const * abbrevs[] = { "EB", "PB", "TB", "GB", "MB", "KB", "Bytes" };
+    size_t numAbbrevs = sizeof(abbrevs) / sizeof(abbrevs[0]);
+    uint64_t maximum = powl(scale, numAbbrevs-1);
+    for (size_t i = 0; i < numAbbrevs-1; ++i) {
+        if (numBytes > maximum) {
+            return [NSString stringWithFormat:@"%.2f %s", numBytes / (double)maximum, abbrevs[i]];
+        }
+        maximum /= scale;
+    }
+    return [NSString stringWithFormat:@"%u Bytes", (unsigned)numBytes];
 }
 
 @end
