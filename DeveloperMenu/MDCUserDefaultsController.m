@@ -42,6 +42,15 @@ static MDCUserDefaultsController *sharedController = nil;
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     [self reloadDefaults];
+    
+    //Check if this was an apple key we weren't allowed to delete
+    
+    if([[NSUserDefaults standardUserDefaults] objectForKey:item.defaultKey]){
+        
+        UIAlertView *permissionDenied = [[UIAlertView alloc] initWithTitle:@"Permission denied" message:@"Sorry, we were unable to delete the key you chose. It is likely that this key is a default key set by Apple" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [permissionDenied show];
+        
+    }
 }
 
 - (void)reloadDefaults
