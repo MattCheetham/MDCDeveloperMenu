@@ -14,7 +14,12 @@
 
 @property (nonatomic, strong) NSMutableArray *userDefaultsItems;
 
+/**
+ Attempts to delete an NSUserDefaults entry. If the entry is an Apple specific entry it will fail to delete and this method will display a UIAlertView explaining this.
+ @param item An MDCUserDefaultItem to be deleted
+ **/
 - (void)deleteUserDefaultsItem:(MDCUserDefaultItem *)item;
+
 + (MDCUserDefaultsController *)sharedController;
 
 @end
