@@ -65,7 +65,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return [self.deviceInformationController deviceInformationCategoryKeyForSection:section];
+    return [self.deviceInformationController deviceInformationCategoryKeyForSection:(int)section];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
