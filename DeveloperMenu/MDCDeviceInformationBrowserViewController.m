@@ -88,7 +88,7 @@
 #pragma mark - Tableview delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-    MDCDeviceInformationItem *deviceItem = self.deviceInformationController.deviceInformationItems[indexPath.row];
+    MDCDeviceInformationItem *deviceItem = [self.deviceInformationController deviceInformationitemsForSectionIndex:indexPath.section][indexPath.row];
     
     CGSize constraint = CGSizeMake(300, MAXFLOAT);
     
