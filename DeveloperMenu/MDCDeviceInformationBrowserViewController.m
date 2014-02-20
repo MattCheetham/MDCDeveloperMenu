@@ -65,7 +65,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return [self.deviceInformationController deviceInformationCategoryKeyForSection:section];
+    return [self.deviceInformationController deviceInformationCategoryKeyForSection:(int)section];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -88,7 +88,7 @@
 #pragma mark - Tableview delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-    MDCDeviceInformationItem *deviceItem = self.deviceInformationController.deviceInformationItems[indexPath.row];
+    MDCDeviceInformationItem *deviceItem = [self.deviceInformationController deviceInformationitemsForSectionIndex:indexPath.section][indexPath.row];
     
     CGSize constraint = CGSizeMake(300, MAXFLOAT);
     

@@ -51,7 +51,6 @@ static MDCDeviceInformationController *sharedController = nil;
         self.deviceInformationItems = [NSMutableArray array];
         self.currentDevice = [UIDevice currentDevice];
         self.telephonyInfo = [CTTelephonyNetworkInfo new];
-        
         self.currentDevice.batteryMonitoringEnabled = YES;
         
         [self populateDeviceInformation];
@@ -102,13 +101,9 @@ static MDCDeviceInformationController *sharedController = nil;
     }
     
     //Disk usage
-    NSFileManager *fm = [NSFileManager defaultManager];
-    NSDictionary *attr = [fm attributesOfFileSystemForPath:@"/" error:nil];
-    unsigned long long freeSpaceInBytes = [attr[NSFileSystemFreeSize] unsignedLongLongValue];
-    unsigned long long totalSpaceInBytes = [attr[NSFileSystemSize] unsignedLongLongValue];
     
-    MDCDeviceInformationItem *deviceFreeSpace = [MDCDeviceInformationItem itemWithProperty:@"Free Space" value:prettyBytes(freeSpaceInBytes) category:@"Disk Usage"];
-    MDCDeviceInformationItem *deviceTotalSpace = [MDCDeviceInformationItem itemWithProperty:@"Total Space" value:prettyBytes(totalSpaceInBytes) category:@"Disk Usage"];
+    MDCDeviceInformationItem *deviceFreeSpace = [MDCDeviceInformationItem itemWithProperty:@"Free Space" value:[self freeDiskSpace] category:@"Disk Usage"];
+    MDCDeviceInformationItem *deviceTotalSpace = [MDCDeviceInformationItem itemWithProperty:@"Total Space" value:[self totalDiskSpace] category:@"Disk Usage"];
     
     [self.deviceInformationItems addObjectsFromArray:@[deviceFreeSpace, deviceTotalSpace]];
     
@@ -143,6 +138,59 @@ static MDCDeviceInformationController *sharedController = nil;
 {
     return [currentRadioAccessTechnologyString stringByReplacingOccurrencesOfString:@"CTRadioAccessTechnology" withString:@""];
 }
+
+
+- (NSString *)localisedDeviceModel
+{
+    //Get system device name
+    struct utsname systemInfo;
+    uname(&systemInfo);
+    NSString *deviceCodeName = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
+    
+    //Setup dictionary of names
+    NSDictionary *deviceNamesByCode = @{@"i386"      :@"Simulator",
+                                        @"iPod1,1"   :@"iPod Touch (Original)",
+                                        @"iPod2,1"   :@"iPod Touch (Second Generation)",
+                                        @"iPod3,1"   :@"iPod Touch (Third Generation)",
+                                        @"iPod4,1"   :@"iPod Touch (Fourth Generation)",
+                                        @"iPod5,1"   :@"iPod Touch (Fifth Generation)",
+                                        @"iPhone1,1" :@"iPhone (Original)",
+                                        @"iPhone1,2" :@"iPhone 3G",
+                                        @"iPhone2,1" :@"iPhone 3GS",
+                                        @"iPhone3,1" :@"iPhone 4",
+                                        @"iPhone3,2" :@"iPhone 4",
+                                        @"iPhone3,3" :@"iPhone 4 CDMA",
+                                        @"iPhone4,1" :@"iPhone 4S",
+                                        @"iPhone5,1" :@"iPhone 5 GSM+LTE",
+                                        @"iPhone5,2" :@"iPhone 5 CDMA+LTE",
+                                        @"iPhone5,3" :@"iPhone 5C",
+                                        @"iPhone5,4" :@"iPhone 5C",
+                                        @"iPhone6,1" :@"iPhone 5S",
+                                        @"iPhone6,2" :@"iPhone 5S",
+                                        @"iPad1,1"   :@"iPad",
+                                        @"iPad2,1"   :@"iPad 2",
+                                        @"iPad2,2"   :@"iPad 2 GSM",
+                                        @"iPad2,3"   :@"iPad 2 CDMA",
+                                        @"iPad2,4"   :@"iPad 2",
+                                        @"iPad2,5"   :@"iPad Mini",
+                                        @"iPad2,6"   :@"iPad Mini GSM+LTE",
+                                        @"iPad2,7"   :@"iPad Mini CDMA+LTE",
+                                        @"iPad3,1"   :@"iPad (3rd Generation)",
+                                        @"iPad3,2"   :@"iPad (3rd Generation) CDMA",
+                                        @"iPad3,3"   :@"iPad (3rd Generation) GSM",
+                                        @"iPad3,4"   :@"iPad (4th Generation)",
+                                        @"iPad3,5"   :@"iPad (4th Generation) GSM+LTE",
+                                        @"iPad3,6"   :@"iPad (4th Generation) CDMA+LTE",
+                                        @"iPad4,1"   :@"iPad Air (Wifi)",
+                                        @"iPad4,2"   :@"iPad Air (Cellular)",
+                                        @"iPad4,4"   :@"iPad Mini Retina (Wifi)",
+                                        @"iPad4,5"   :@"iPad Mini Retina (Cellular)"
+                                        };
+    
+    return deviceNamesByCode[deviceCodeName] ? deviceNamesByCode[deviceCodeName] : deviceCodeName;
+}
+
+#pragma mark - Tableview section handling
 
 - (NSArray *)deviceInformationCategoryKeys
 {
@@ -181,87 +229,42 @@ static MDCDeviceInformationController *sharedController = nil;
     return deviceItems;
 }
 
-- (NSString *)localisedDeviceModel
+#pragma mark - Disk space calculations
+
+- (NSString *)totalDiskSpace
 {
-    //Get system device name
-    struct utsname systemInfo;
-    uname(&systemInfo);
-    NSString *deviceCodeName = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
+    uint64_t totalSpace = 0;
+    NSError *error = nil;
     
-    //Setup dictionary of names
-    NSDictionary *deviceNamesByCode = @{@"i386"      :@"Simulator",
-                          @"iPod1,1"   :@"iPod Touch (Original)",
-                          @"iPod2,1"   :@"iPod Touch (Second Generation)",
-                          @"iPod3,1"   :@"iPod Touch (Third Generation)",
-                          @"iPod4,1"   :@"iPod Touch (Fourth Generation)",
-                          @"iPod5,1"   :@"iPod Touch (Fifth Generation)",
-                          @"iPhone1,1" :@"iPhone (Original)",
-                          @"iPhone1,2" :@"iPhone 3G",
-                          @"iPhone2,1" :@"iPhone 3GS",
-                          @"iPhone3,1" :@"iPhone 4",
-                          @"iPhone3,2" :@"iPhone 4",
-                          @"iPhone3,3" :@"iPhone 4 CDMA",
-                          @"iPhone4,1" :@"iPhone 4S",
-                          @"iPhone5,1" :@"iPhone 5 GSM+LTE",
-                          @"iPhone5,2" :@"iPhone 5 CDMA+LTE",
-                          @"iPhone5,3" :@"iPhone 5C",
-                          @"iPhone5,4" :@"iPhone 5C",
-                          @"iPhone6,1" :@"iPhone 5S",
-                          @"iPhone6,2" :@"iPhone 5S",
-                          @"iPad1,1"   :@"iPad",
-                          @"iPad2,1"   :@"iPad 2",
-                          @"iPad2,2"   :@"iPad 2 GSM",
-                          @"iPad2,3"   :@"iPad 2 CDMA",
-                          @"iPad2,4"   :@"iPad 2",
-                          @"iPad2,5"   :@"iPad Mini",
-                          @"iPad2,6"   :@"iPad Mini GSM+LTE",
-                          @"iPad2,7"   :@"iPad Mini CDMA+LTE",
-                          @"iPad3,1"   :@"iPad (3rd Generation)",
-                          @"iPad3,2"   :@"iPad (3rd Generation) CDMA",
-                          @"iPad3,3"   :@"iPad (3rd Generation) GSM",
-                          @"iPad3,4"   :@"iPad (4th Generation)",
-                          @"iPad3,5"   :@"iPad (4th Generation) GSM+LTE",
-                          @"iPad3,6"   :@"iPad (4th Generation) CDMA+LTE",
-                          @"iPad4,1"   :@"iPad Air (Wifi)",
-                          @"iPad4,2"   :@"iPad Air (Cellular)",
-                          @"iPad4,4"   :@"iPad Mini Retina (Wifi)",
-                          @"iPad4,5"   :@"iPad Mini Retina (Cellular)"
-                          };
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSDictionary *dictionary = [[NSFileManager defaultManager] attributesOfFileSystemForPath:[paths lastObject] error:&error];
     
-    return deviceNamesByCode[deviceCodeName] ? deviceNamesByCode[deviceCodeName] : deviceCodeName;
-}
-
-- (float)totaldiskSpace {
-    NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    struct statfs tStats;
-    statfs([[paths lastObject] cString], &tStats);
-    float total_space = (float)(tStats.f_blocks * tStats.f_bsize);
-    
-    return total_space;
-}
-
-- (float)remainingDiskSpace {
-    NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    struct statfs tStats;
-    statfs([[paths lastObject] cString], &tStats);
-    float remaining_space = (float)(tStats.f_bfree * tStats.f_bsize);
-    
-    return remaining_space;
-}
-
-static NSString* prettyBytes(uint64_t numBytes)
-{
-    uint64_t const scale = 1024;
-    char const * abbrevs[] = { "EB", "PB", "TB", "GB", "MB", "KB", "Bytes" };
-    size_t numAbbrevs = sizeof(abbrevs) / sizeof(abbrevs[0]);
-    uint64_t maximum = powl(scale, numAbbrevs-1);
-    for (size_t i = 0; i < numAbbrevs-1; ++i) {
-        if (numBytes > maximum) {
-            return [NSString stringWithFormat:@"%.2f %s", numBytes / (double)maximum, abbrevs[i]];
-        }
-        maximum /= scale;
+    if (dictionary) {
+        NSNumber *fileSystemSizeInBytes = dictionary[NSFileSystemSize];
+        totalSpace = [fileSystemSizeInBytes unsignedLongLongValue];
+    } else {
+        MDCLogErr(@"Error fetching disk space:%@", error.localizedDescription);
     }
-    return [NSString stringWithFormat:@"%u Bytes", (unsigned)numBytes];
+    
+    return [NSString stringWithFormat:@"%llu MiB", ((totalSpace/1024ll)/1024ll)];
+}
+
+- (NSString *)freeDiskSpace
+{
+    uint64_t totalFreeSpace = 0;
+    NSError *error = nil;
+
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSDictionary *dictionary = [[NSFileManager defaultManager] attributesOfFileSystemForPath:[paths lastObject] error:&error];
+
+    if (dictionary) {
+        NSNumber *freeFileSystemSizeInBytes = dictionary[NSFileSystemFreeSize];
+        totalFreeSpace = [freeFileSystemSizeInBytes unsignedLongLongValue];
+    } else {
+        MDCLogErr(@"Error fetching free disk space:%@", error.localizedDescription);
+    }
+
+    return [NSString stringWithFormat:@"%llu MiB", ((totalFreeSpace/1024ll)/1024ll)];
 }
 
 @end

@@ -44,6 +44,7 @@ static MDCLogController *sharedController = nil;
     NSString *message = [[NSString alloc] initWithFormat:logContent
                                                arguments:args];
     va_end(args);
+    
     MDCLog *log = [MDCLog logWithContent:message content:logLevel];
     [self willChangeValueForKey:@"deviceLogs"];
     [self.deviceLogs addObject:log];
