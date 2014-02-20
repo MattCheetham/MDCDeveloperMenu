@@ -243,7 +243,7 @@ static MDCDeviceInformationController *sharedController = nil;
         NSNumber *fileSystemSizeInBytes = dictionary[NSFileSystemSize];
         totalSpace = [fileSystemSizeInBytes unsignedLongLongValue];
     } else {
-        NSLog(@"Error fetching disk space:%@", error.localizedDescription);
+        MDCLogErr(@"Error fetching disk space:%@", error.localizedDescription);
     }
     
     return [NSString stringWithFormat:@"%llu MiB", ((totalSpace/1024ll)/1024ll)];
@@ -261,7 +261,7 @@ static MDCDeviceInformationController *sharedController = nil;
         NSNumber *freeFileSystemSizeInBytes = dictionary[NSFileSystemFreeSize];
         totalFreeSpace = [freeFileSystemSizeInBytes unsignedLongLongValue];
     } else {
-        NSLog(@"Error fetching free disk space:%@", error.localizedDescription);
+        MDCLogErr(@"Error fetching free disk space:%@", error.localizedDescription);
     }
 
     return [NSString stringWithFormat:@"%llu MiB", ((totalFreeSpace/1024ll)/1024ll)];
