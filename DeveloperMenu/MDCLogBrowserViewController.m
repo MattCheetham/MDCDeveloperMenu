@@ -17,6 +17,11 @@
 
 @implementation MDCLogBrowserViewController
 
+- (void)dealloc
+{
+    [self.logController removeObserver:self forKeyPath:@"deviceLogs" context:nil];
+}
+
 - (id)init
 {
     self = [super initWithStyle:UITableViewStyleGrouped];
