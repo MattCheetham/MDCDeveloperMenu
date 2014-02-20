@@ -17,20 +17,20 @@
 /**
  Retrieves a list of objects relating to device information for a category at a particular index
  @param index The index of the section you wish to return objects for
- @returns NSArray of MDCDeviceInformationItem objects belonging to the selected category
+ @return NSArray of MDCDeviceInformationItem objects belonging to the selected category
  **/
 - (NSArray *)deviceInformationitemsForSectionIndex:(int)index;
 
 /**
  Gets the title of the section based on a supplied index. The title is taken from the category of the objects inside the array
  @param index The index of the section you wish to get the title for
- @returns NSString of the category/section title
+ @return NSString of the category/section title
  **/
 - (NSString *)deviceInformationCategoryKeyForSection:(int)index;
 
 /**
  Gets an array of category/section titles for all of the current device information objects
- @returns NSArray of NSString objects. These are the category titles.
+ @return NSArray of NSString objects. These are the category titles.
  **/
 - (NSArray *)deviceInformationCategoryKeys;
 
