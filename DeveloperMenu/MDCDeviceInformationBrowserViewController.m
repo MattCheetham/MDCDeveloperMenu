@@ -19,6 +19,11 @@
 
 @implementation MDCDeviceInformationBrowserViewController
 
+- (void)dealloc
+{
+    [self.deviceInformationController removeObserver:self forKeyPath:@"deviceInformationItems" context:nil];
+}
+
 - (id)init
 {
     self = [super initWithStyle:UITableViewStyleGrouped];
@@ -30,7 +35,7 @@
         
         [self.tableView registerClass:[MDCCell class] forCellReuseIdentifier:@"Cell"];
         
-        [self.deviceInformationController addObserver:self forKeyPath:@"deviceInformationItems" options:kNilOptions context:0];
+        [self.deviceInformationController addObserver:self forKeyPath:@"deviceInformationItems" options:kNilOptions context:nil];
         
     }
     return self;

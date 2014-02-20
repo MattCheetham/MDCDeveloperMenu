@@ -20,6 +20,11 @@
 
 @implementation MDCUserDefaultsBrowserViewController
 
+- (void)dealloc
+{
+    [[MDCUserDefaultsController sharedController] removeObserver:self forKeyPath:@"userDefaultsItems" context:nil];
+}
+
 - (id)initWithUserDefaultsItems:(NSArray *)items
 {
     self = [super initWithStyle:UITableViewStyleGrouped];
