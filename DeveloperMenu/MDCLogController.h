@@ -50,5 +50,10 @@ The highest priority, usually reserved for catastrophic failures and reboot noti
 
 + (MDCLogController *)sharedController;
 
+/**
+ Adds a log to the device console as well as storing it for viewing in the developer panel. This method should not be invoked manually but should be used with one of the MDCLog macros.
+ @param logLevel An MDCLogLevel enum defining the current log level
+ @param logContent An NSString of the content that needs to be written to the log appended with any VA_ARGS for string formatting
+ **/
 - (void)addLogWithLevel:(MDCLogLevel)logLevel logContent:(NSString *)logContent, ...;
 @end
