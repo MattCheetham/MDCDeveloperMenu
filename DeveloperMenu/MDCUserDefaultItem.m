@@ -28,7 +28,7 @@
                 
             }
             
-        }else if(![value isKindOfClass:[NSArray class]]){
+        } else if(![value isKindOfClass:[NSArray class]]){
             
             self.defaultValue = [MDCValueConverter stringForObscureValue:value];
             
