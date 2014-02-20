@@ -34,14 +34,14 @@ MDCLogEmerg
 The highest priority, usually reserved for catastrophic failures and reboot notices.
 */
 
-#define MDCLogDebug(format, ...) [[MDCLogController sharedController] addLogWithLevel:MDCLogLevelDebug logContent:format, ##__VA_ARGS__];
-#define MDCLogInfo(format, ...) [[MDCLogController sharedController] addLogWithLevel:MDCLogLevelInfo logContent:format, ##__VA_ARGS__];
-#define MDCLogNotice(format, ...) [[MDCLogController sharedController] addLogWithLevel:MDCLogLevelNotice logContent:format, ##__VA_ARGS__];
-#define MDCLogWarning(format, ...) [[MDCLogController sharedController] addLogWithLevel:MDCLogLevelWarning logContent:format, ##__VA_ARGS__];
-#define MDCLogErr(format, ...) [[MDCLogController sharedController] addLogWithLevel:MDCLogLevelErr logContent:format, ##__VA_ARGS__];
-#define MDCLogCrit(format, ...) [[MDCLogController sharedController] addLogWithLevel:MDCLogLevelCrit logContent:format, ##__VA_ARGS__];
-#define MDCLogAlert(format, ...) [[MDCLogController sharedController] addLogWithLevel:MDCLogLevelAlert logContent:format, ##__VA_ARGS__];
-#define MDCLogEmerg(format, ...) [[MDCLogController sharedController] addLogWithLevel:MDCLogLevelEmerg logContent:format, ##__VA_ARGS__];
+#define MDCLogDebug(format, ...) [[MDCLogController sharedController] addLogWithLevel:MDCLogLevelDebug logContent:format, ##__VA_ARGS__]
+#define MDCLogInfo(format, ...) [[MDCLogController sharedController] addLogWithLevel:MDCLogLevelInfo logContent:format, ##__VA_ARGS__]
+#define MDCLogNotice(format, ...) [[MDCLogController sharedController] addLogWithLevel:MDCLogLevelNotice logContent:format, ##__VA_ARGS__]
+#define MDCLogWarning(format, ...) [[MDCLogController sharedController] addLogWithLevel:MDCLogLevelWarning logContent:format, ##__VA_ARGS__]
+#define MDCLogErr(format, ...) [[MDCLogController sharedController] addLogWithLevel:MDCLogLevelErr logContent:format, ##__VA_ARGS__]
+#define MDCLogCrit(format, ...) [[MDCLogController sharedController] addLogWithLevel:MDCLogLevelCrit logContent:format, ##__VA_ARGS__]
+#define MDCLogAlert(format, ...) [[MDCLogController sharedController] addLogWithLevel:MDCLogLevelAlert logContent:format, ##__VA_ARGS__]
+#define MDCLogEmerg(format, ...) [[MDCLogController sharedController] addLogWithLevel:MDCLogLevelEmerg logContent:format, ##__VA_ARGS__]
 
 
 @interface MDCLogController : NSObject
