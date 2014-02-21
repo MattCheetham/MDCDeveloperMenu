@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		330ED02A189C0E35001AF047 /* MDCUserDefaultsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 330ED029189C0E35001AF047 /* MDCUserDefaultsController.m */; };
+		330ED02D189C0EE4001AF047 /* MDCUserDefaultItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 330ED02C189C0EE4001AF047 /* MDCUserDefaultItem.m */; };
+		330ED030189C10C8001AF047 /* MDCUserDefaultsBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 330ED02F189C10C8001AF047 /* MDCUserDefaultsBrowserViewController.m */; };
+		335EB8F7189EE4ED0014FBCC /* MDCDeviceInformationBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 335EB8F6189EE4ED0014FBCC /* MDCDeviceInformationBrowserViewController.m */; };
+		335EB8FA189EE5440014FBCC /* MDCDeviceInformationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 335EB8F9189EE5440014FBCC /* MDCDeviceInformationController.m */; };
+		335EB8FD189EE5630014FBCC /* MDCDeviceInformationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 335EB8FC189EE5630014FBCC /* MDCDeviceInformationItem.m */; };
 		33A61836188A756E007D5701 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A61835188A756E007D5701 /* Foundation.framework */; };
 		33A61838188A756E007D5701 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A61837188A756E007D5701 /* CoreGraphics.framework */; };
 		33A6183A188A756E007D5701 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A61839188A756E007D5701 /* UIKit.framework */; };
@@ -19,6 +25,21 @@
 		33A61851188A756E007D5701 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A61839188A756E007D5701 /* UIKit.framework */; };
 		33A61859188A756F007D5701 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 33A61857188A756F007D5701 /* InfoPlist.strings */; };
 		33A6185B188A756F007D5701 /* DeveloperMenuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A6185A188A756F007D5701 /* DeveloperMenuTests.m */; };
+		33A61866188A760E007D5701 /* MDCExampleRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A61865188A760E007D5701 /* MDCExampleRootViewController.m */; };
+		33A6186D188A7741007D5701 /* MDCDeveloperMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A6186C188A7741007D5701 /* MDCDeveloperMenuViewController.m */; };
+		33C66B49189AEE5D007E0C36 /* MDCValueConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 33C66B48189AEE5D007E0C36 /* MDCValueConverter.m */; };
+		33C66B4D189AEF3B007E0C36 /* MDCPlistBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33C66B4C189AEF3B007E0C36 /* MDCPlistBrowserViewController.m */; };
+		33C66B50189AF5B7007E0C36 /* MDCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33C66B4F189AF5B7007E0C36 /* MDCCell.m */; };
+		33C66B53189AFF91007E0C36 /* MDCPlistItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 33C66B52189AFF91007E0C36 /* MDCPlistItem.m */; };
+		33C66B56189B0041007E0C36 /* MDCPlistController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33C66B55189B0041007E0C36 /* MDCPlistController.m */; };
+		33FBCF7D189E6032001130EC /* MDCLogController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33FBCF7C189E6032001130EC /* MDCLogController.m */; };
+		33FBCF80189E60D4001130EC /* MDCLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 33FBCF7F189E60D4001130EC /* MDCLog.m */; };
+		33FBCF83189E76E4001130EC /* MDCLogBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33FBCF82189E76E4001130EC /* MDCLogBrowserViewController.m */; };
+		494442B018B5336D00B74627 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 494442AF18B5336D00B74627 /* CoreTelephony.framework */; };
+		494442B218B55C6800B74627 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 494442B118B55C6800B74627 /* SystemConfiguration.framework */; };
+		49608A6518B7152B0033D758 /* MDCUserDefaultsEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49608A6418B7152B0033D758 /* MDCUserDefaultsEditorViewController.m */; };
+		49608A6818B715ED0033D758 /* MDCInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49608A6718B715ED0033D758 /* MDCInputCell.m */; };
+		49608A6A18B735460033D758 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49608A6918B735460033D758 /* MessageUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +53,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		330ED028189C0E35001AF047 /* MDCUserDefaultsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCUserDefaultsController.h; sourceTree = "<group>"; };
+		330ED029189C0E35001AF047 /* MDCUserDefaultsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCUserDefaultsController.m; sourceTree = "<group>"; };
+		330ED02B189C0EE4001AF047 /* MDCUserDefaultItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCUserDefaultItem.h; sourceTree = "<group>"; };
+		330ED02C189C0EE4001AF047 /* MDCUserDefaultItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCUserDefaultItem.m; sourceTree = "<group>"; };
+		330ED02E189C10C8001AF047 /* MDCUserDefaultsBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCUserDefaultsBrowserViewController.h; sourceTree = "<group>"; };
+		330ED02F189C10C8001AF047 /* MDCUserDefaultsBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCUserDefaultsBrowserViewController.m; sourceTree = "<group>"; };
+		335EB8F5189EE4ED0014FBCC /* MDCDeviceInformationBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCDeviceInformationBrowserViewController.h; sourceTree = "<group>"; };
+		335EB8F6189EE4ED0014FBCC /* MDCDeviceInformationBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCDeviceInformationBrowserViewController.m; sourceTree = "<group>"; };
+		335EB8F8189EE5440014FBCC /* MDCDeviceInformationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCDeviceInformationController.h; sourceTree = "<group>"; };
+		335EB8F9189EE5440014FBCC /* MDCDeviceInformationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCDeviceInformationController.m; sourceTree = "<group>"; };
+		335EB8FB189EE5630014FBCC /* MDCDeviceInformationItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCDeviceInformationItem.h; sourceTree = "<group>"; };
+		335EB8FC189EE5630014FBCC /* MDCDeviceInformationItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCDeviceInformationItem.m; sourceTree = "<group>"; };
 		33A61832188A756E007D5701 /* DeveloperMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeveloperMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33A61835188A756E007D5701 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		33A61837188A756E007D5701 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -48,6 +81,33 @@
 		33A61856188A756F007D5701 /* DeveloperMenuTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DeveloperMenuTests-Info.plist"; sourceTree = "<group>"; };
 		33A61858188A756F007D5701 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		33A6185A188A756F007D5701 /* DeveloperMenuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeveloperMenuTests.m; sourceTree = "<group>"; };
+		33A61864188A760E007D5701 /* MDCExampleRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCExampleRootViewController.h; sourceTree = "<group>"; };
+		33A61865188A760E007D5701 /* MDCExampleRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCExampleRootViewController.m; sourceTree = "<group>"; };
+		33A6186B188A7741007D5701 /* MDCDeveloperMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCDeveloperMenuViewController.h; sourceTree = "<group>"; };
+		33A6186C188A7741007D5701 /* MDCDeveloperMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCDeveloperMenuViewController.m; sourceTree = "<group>"; };
+		33C66B47189AEE5D007E0C36 /* MDCValueConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCValueConverter.h; sourceTree = "<group>"; };
+		33C66B48189AEE5D007E0C36 /* MDCValueConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCValueConverter.m; sourceTree = "<group>"; };
+		33C66B4B189AEF3B007E0C36 /* MDCPlistBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCPlistBrowserViewController.h; sourceTree = "<group>"; };
+		33C66B4C189AEF3B007E0C36 /* MDCPlistBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCPlistBrowserViewController.m; sourceTree = "<group>"; };
+		33C66B4E189AF5B7007E0C36 /* MDCCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCCell.h; sourceTree = "<group>"; };
+		33C66B4F189AF5B7007E0C36 /* MDCCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCCell.m; sourceTree = "<group>"; };
+		33C66B51189AFF91007E0C36 /* MDCPlistItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCPlistItem.h; sourceTree = "<group>"; };
+		33C66B52189AFF91007E0C36 /* MDCPlistItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCPlistItem.m; sourceTree = "<group>"; };
+		33C66B54189B0041007E0C36 /* MDCPlistController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCPlistController.h; sourceTree = "<group>"; };
+		33C66B55189B0041007E0C36 /* MDCPlistController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCPlistController.m; sourceTree = "<group>"; };
+		33FBCF7B189E6032001130EC /* MDCLogController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCLogController.h; sourceTree = "<group>"; };
+		33FBCF7C189E6032001130EC /* MDCLogController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCLogController.m; sourceTree = "<group>"; };
+		33FBCF7E189E60D4001130EC /* MDCLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCLog.h; sourceTree = "<group>"; };
+		33FBCF7F189E60D4001130EC /* MDCLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCLog.m; sourceTree = "<group>"; };
+		33FBCF81189E76E4001130EC /* MDCLogBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCLogBrowserViewController.h; sourceTree = "<group>"; };
+		33FBCF82189E76E4001130EC /* MDCLogBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCLogBrowserViewController.m; sourceTree = "<group>"; };
+		494442AF18B5336D00B74627 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		494442B118B55C6800B74627 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		49608A6318B7152B0033D758 /* MDCUserDefaultsEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCUserDefaultsEditorViewController.h; sourceTree = "<group>"; };
+		49608A6418B7152B0033D758 /* MDCUserDefaultsEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCUserDefaultsEditorViewController.m; sourceTree = "<group>"; };
+		49608A6618B715ED0033D758 /* MDCInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCInputCell.h; sourceTree = "<group>"; };
+		49608A6718B715ED0033D758 /* MDCInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCInputCell.m; sourceTree = "<group>"; };
+		49608A6918B735460033D758 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +115,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49608A6A18B735460033D758 /* MessageUI.framework in Frameworks */,
+				494442B218B55C6800B74627 /* SystemConfiguration.framework in Frameworks */,
+				494442B018B5336D00B74627 /* CoreTelephony.framework in Frameworks */,
 				33A61838188A756E007D5701 /* CoreGraphics.framework in Frameworks */,
 				33A6183A188A756E007D5701 /* UIKit.framework in Frameworks */,
 				33A61836188A756E007D5701 /* Foundation.framework in Frameworks */,
@@ -96,6 +159,9 @@
 		33A61834188A756E007D5701 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				49608A6918B735460033D758 /* MessageUI.framework */,
+				494442B118B55C6800B74627 /* SystemConfiguration.framework */,
+				494442AF18B5336D00B74627 /* CoreTelephony.framework */,
 				33A61835188A756E007D5701 /* Foundation.framework */,
 				33A61837188A756E007D5701 /* CoreGraphics.framework */,
 				33A61839188A756E007D5701 /* UIKit.framework */,
@@ -109,7 +175,12 @@
 			children = (
 				33A61844188A756E007D5701 /* MDCAppDelegate.h */,
 				33A61845188A756E007D5701 /* MDCAppDelegate.m */,
+				33A6186A188A762A007D5701 /* Controllers */,
+				33A61869188A7625007D5701 /* Models */,
+				33A61868188A761E007D5701 /* Views */,
+				33A61867188A7613007D5701 /* View Controllers */,
 				33A61847188A756E007D5701 /* Images.xcassets */,
+				33C66B4A189AEE9B007E0C36 /* Convenience */,
 				33A6183C188A756E007D5701 /* Supporting Files */,
 			);
 			path = DeveloperMenu;
@@ -142,6 +213,77 @@
 				33A61857188A756F007D5701 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		33A61867188A7613007D5701 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				49608A6318B7152B0033D758 /* MDCUserDefaultsEditorViewController.h */,
+				49608A6418B7152B0033D758 /* MDCUserDefaultsEditorViewController.m */,
+				335EB8F5189EE4ED0014FBCC /* MDCDeviceInformationBrowserViewController.h */,
+				335EB8F6189EE4ED0014FBCC /* MDCDeviceInformationBrowserViewController.m */,
+				33FBCF81189E76E4001130EC /* MDCLogBrowserViewController.h */,
+				33FBCF82189E76E4001130EC /* MDCLogBrowserViewController.m */,
+				330ED02E189C10C8001AF047 /* MDCUserDefaultsBrowserViewController.h */,
+				330ED02F189C10C8001AF047 /* MDCUserDefaultsBrowserViewController.m */,
+				33C66B4B189AEF3B007E0C36 /* MDCPlistBrowserViewController.h */,
+				33C66B4C189AEF3B007E0C36 /* MDCPlistBrowserViewController.m */,
+				33A6186B188A7741007D5701 /* MDCDeveloperMenuViewController.h */,
+				33A6186C188A7741007D5701 /* MDCDeveloperMenuViewController.m */,
+				33A61864188A760E007D5701 /* MDCExampleRootViewController.h */,
+				33A61865188A760E007D5701 /* MDCExampleRootViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		33A61868188A761E007D5701 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				49608A6618B715ED0033D758 /* MDCInputCell.h */,
+				49608A6718B715ED0033D758 /* MDCInputCell.m */,
+				33C66B4E189AF5B7007E0C36 /* MDCCell.h */,
+				33C66B4F189AF5B7007E0C36 /* MDCCell.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		33A61869188A7625007D5701 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				335EB8FB189EE5630014FBCC /* MDCDeviceInformationItem.h */,
+				335EB8FC189EE5630014FBCC /* MDCDeviceInformationItem.m */,
+				33FBCF7E189E60D4001130EC /* MDCLog.h */,
+				33FBCF7F189E60D4001130EC /* MDCLog.m */,
+				330ED02B189C0EE4001AF047 /* MDCUserDefaultItem.h */,
+				330ED02C189C0EE4001AF047 /* MDCUserDefaultItem.m */,
+				33C66B51189AFF91007E0C36 /* MDCPlistItem.h */,
+				33C66B52189AFF91007E0C36 /* MDCPlistItem.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		33A6186A188A762A007D5701 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				335EB8F8189EE5440014FBCC /* MDCDeviceInformationController.h */,
+				335EB8F9189EE5440014FBCC /* MDCDeviceInformationController.m */,
+				33FBCF7B189E6032001130EC /* MDCLogController.h */,
+				33FBCF7C189E6032001130EC /* MDCLogController.m */,
+				330ED028189C0E35001AF047 /* MDCUserDefaultsController.h */,
+				330ED029189C0E35001AF047 /* MDCUserDefaultsController.m */,
+				33C66B54189B0041007E0C36 /* MDCPlistController.h */,
+				33C66B55189B0041007E0C36 /* MDCPlistController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		33C66B4A189AEE9B007E0C36 /* Convenience */ = {
+			isa = PBXGroup;
+			children = (
+				33C66B47189AEE5D007E0C36 /* MDCValueConverter.h */,
+				33C66B48189AEE5D007E0C36 /* MDCValueConverter.m */,
+			);
+			name = Convenience;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,6 +334,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matthew Cheetham";
 				TargetAttributes = {
+					33A61831188A756E007D5701 = {
+						DevelopmentTeam = 36E8P5DP9L;
+					};
 					33A6184C188A756E007D5701 = {
 						TestTargetID = 33A61831188A756E007D5701;
 					};
@@ -240,8 +385,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				335EB8FA189EE5440014FBCC /* MDCDeviceInformationController.m in Sources */,
+				33C66B53189AFF91007E0C36 /* MDCPlistItem.m in Sources */,
+				330ED02A189C0E35001AF047 /* MDCUserDefaultsController.m in Sources */,
+				330ED02D189C0EE4001AF047 /* MDCUserDefaultItem.m in Sources */,
+				335EB8FD189EE5630014FBCC /* MDCDeviceInformationItem.m in Sources */,
+				335EB8F7189EE4ED0014FBCC /* MDCDeviceInformationBrowserViewController.m in Sources */,
+				330ED030189C10C8001AF047 /* MDCUserDefaultsBrowserViewController.m in Sources */,
 				33A61842188A756E007D5701 /* main.m in Sources */,
+				33C66B4D189AEF3B007E0C36 /* MDCPlistBrowserViewController.m in Sources */,
+				49608A6818B715ED0033D758 /* MDCInputCell.m in Sources */,
+				33A61866188A760E007D5701 /* MDCExampleRootViewController.m in Sources */,
+				33FBCF80189E60D4001130EC /* MDCLog.m in Sources */,
+				33C66B50189AF5B7007E0C36 /* MDCCell.m in Sources */,
+				33A6186D188A7741007D5701 /* MDCDeveloperMenuViewController.m in Sources */,
 				33A61846188A756E007D5701 /* MDCAppDelegate.m in Sources */,
+				33FBCF7D189E6032001130EC /* MDCLogController.m in Sources */,
+				33FBCF83189E76E4001130EC /* MDCLogBrowserViewController.m in Sources */,
+				49608A6518B7152B0033D758 /* MDCUserDefaultsEditorViewController.m in Sources */,
+				33C66B49189AEE5D007E0C36 /* MDCValueConverter.m in Sources */,
+				33C66B56189B0041007E0C36 /* MDCPlistController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,10 +523,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DeveloperMenu/DeveloperMenu-Prefix.pch";
 				INFOPLIST_FILE = "DeveloperMenu/DeveloperMenu-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -373,10 +539,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DeveloperMenu/DeveloperMenu-Prefix.pch";
 				INFOPLIST_FILE = "DeveloperMenu/DeveloperMenu-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
