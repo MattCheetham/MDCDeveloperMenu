@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class MDCUserDefaultItem;
+
 @interface MDCPlistEditorViewController : UITableViewController
+
+- (id)initWithUserDefaultsItem:(MDCUserDefaultItem *)item;
 
 @end
