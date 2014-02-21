@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Matthew Cheetham. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@class MDCUserDefaultItem;
 
 @interface MDCInputCell : UITableViewCell
 
