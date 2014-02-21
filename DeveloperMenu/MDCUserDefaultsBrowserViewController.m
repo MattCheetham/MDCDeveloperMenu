@@ -94,7 +94,7 @@
 {
     MDCUserDefaultItem *item = self.userDefaultsItems[indexPath.row];
     
-    CGSize constraint = CGSizeMake(300, MAXFLOAT);
+    CGSize constraint = CGSizeMake(290, MAXFLOAT);
     
     CGSize size = [item.defaultValue sizeWithFont:[UIFont systemFontOfSize:20] constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
     

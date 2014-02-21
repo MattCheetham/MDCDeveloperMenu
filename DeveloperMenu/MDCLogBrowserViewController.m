@@ -84,9 +84,9 @@
 {
     MDCLog *log = self.logController.deviceLogs[indexPath.row];
     
-    CGSize constraint = CGSizeMake(300, MAXFLOAT);
+    CGSize constraint = CGSizeMake(290, MAXFLOAT);
     
-    CGSize size = [log.logContent sizeWithFont:[UIFont systemFontOfSize:20] constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
+    CGSize size = [log.logContentWithLevelPrefix sizeWithFont:[UIFont systemFontOfSize:20] constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
     
     CGFloat height = MAX(size.height + 11, 44.0f);
     
