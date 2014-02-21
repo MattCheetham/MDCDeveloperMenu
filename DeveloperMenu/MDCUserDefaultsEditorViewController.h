@@ -10,7 +10,7 @@
 
 @class MDCUserDefaultItem;
 
-@interface MDCPlistEditorViewController : UITableViewController
+@interface MDCUserDefaultsEditorViewController : UITableViewController
 
 - (id)initWithUserDefaultsItem:(MDCUserDefaultItem *)item;
 

@@ -6,17 +6,17 @@
 //  Copyright (c) 2014 Matthew Cheetham. All rights reserved.
 //
 
-#import "MDCPlistEditorViewController.h"
+#import "MDCUserDefaultsEditorViewController.h"
 #import "MDCUserDefaultItem.h"
 #import "MDCInputCell.h"
 
-@interface MDCPlistEditorViewController ()
+@interface MDCUserDefaultsEditorViewController ()
 
 @property (nonatomic, strong) MDCUserDefaultItem *defaultsItem;
 
 @end
 
-@implementation MDCPlistEditorViewController
+@implementation MDCUserDefaultsEditorViewController
 
 - (id)initWithUserDefaultsItem:(MDCUserDefaultItem *)item
 {
