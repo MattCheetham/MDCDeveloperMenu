@@ -31,7 +31,7 @@
     [self.window makeKeyAndVisible];
 
     //Attatch Developer menu
-    self.developerMenu = [[MDCDeveloperMenuViewController alloc] init];
+    self.developerMenu = [MDCDeveloperMenuViewController new];
     [self.developerMenu attachToViewController:self.window.rootViewController];
     
     return YES;
