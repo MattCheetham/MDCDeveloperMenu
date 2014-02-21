@@ -25,6 +25,9 @@
         
         self.title = @"Edit property";
         
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelPlistEditing)];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(savePlistItem)];
+        
         [self.tableView registerClass:[MDCInputCell class] forCellReuseIdentifier:@"Cell"];
         
         self.defaultsItem = item;
