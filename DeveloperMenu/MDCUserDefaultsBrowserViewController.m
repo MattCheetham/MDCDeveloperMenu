@@ -112,13 +112,15 @@
         MDCUserDefaultsBrowserViewController *defaultsBrowser = [[MDCUserDefaultsBrowserViewController alloc] initWithUserDefaultsItems:item.children];
         [self.navigationController pushViewController:defaultsBrowser animated:YES];
         
-    } else {
+    } else if(item.defaultKey) {
         
         MDCUserDefaultsEditorViewController *defaultsEditor = [[MDCUserDefaultsEditorViewController alloc] initWithUserDefaultsItem:item];
         UINavigationController *defaultsNav = [[UINavigationController alloc] initWithRootViewController:defaultsEditor];
         [self presentViewController:defaultsNav animated:YES completion:nil];
         
     }
+    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
 }
 
