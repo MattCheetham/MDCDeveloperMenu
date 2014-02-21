@@ -116,7 +116,7 @@
         
         MDCUserDefaultsEditorViewController *defaultsEditor = [[MDCUserDefaultsEditorViewController alloc] initWithUserDefaultsItem:item];
         UINavigationController *defaultsNav = [[UINavigationController alloc] initWithRootViewController:defaultsEditor];
-        [self presentViewController:defaultsEditor animated:defaultsEditor completion:nil];
+        [self presentViewController:defaultsNav animated:YES completion:nil];
         
     }
     
