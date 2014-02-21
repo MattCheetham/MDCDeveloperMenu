@@ -73,7 +73,7 @@
     
     MDCLog *log = self.logController.deviceLogs[indexPath.row];
     
-    cell.textLabel.text = [log logContentWithLevelPrefix];
+    cell.textLabel.attributedText = [log attributedLogContentWithlevelPrefix];
     cell.detailTextLabel.text = [log friendlyTimeAndDate];
     
     return cell;

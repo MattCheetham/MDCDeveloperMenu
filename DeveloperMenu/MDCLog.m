@@ -34,6 +34,23 @@
     return [NSString stringWithFormat:@"<%@>: %@", [self stringForLogLevel:self.logLevel], self.logContent];
 }
 
+- (NSAttributedString *)attributedLogContentWithlevelPrefix
+{
+    NSString *logContentString = [self logContentWithLevelPrefix];
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:logContentString];
+    
+    [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor brownColor] range:[logContentString rangeOfString:@"<Debug>"]];
+    [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:[logContentString rangeOfString:@"<Information>"]];
+    [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor grayColor] range:[logContentString rangeOfString:@"<Notice>"]];
+    [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:224.0f/255.0f green:221.0f/255.0f blue:29.0f/255.0f alpha:1.0] range:[logContentString rangeOfString:@"<Warning>"]];
+    [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor] range:[logContentString rangeOfString:@"<Error>"]];
+    [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:[logContentString rangeOfString:@"<Critical>"]];
+    [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:181.0f/255.0f green:0.0f/255.0f blue:0.0f/255.0f alpha:1.0] range:[logContentString rangeOfString:@"<Alert>"]];
+    [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:[logContentString rangeOfString:@"<Emergency>"]];
+    
+    return attributedString;
+}
+
 - (NSString *)stringForLogLevel:(MDCLogLevel)level
 {
     switch (level) {
@@ -75,5 +92,6 @@
     
     return [formatter stringFromDate:self.logTime];
 }
+
 
 @end
