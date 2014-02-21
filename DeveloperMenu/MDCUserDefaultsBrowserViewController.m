@@ -10,6 +10,7 @@
 #import "MDCCell.h"
 #import "MDCUserDefaultItem.h"
 #import "MDCUserDefaultsController.h"
+#import "MDCUserDefaultsEditorViewController.h"
 
 @interface MDCUserDefaultsBrowserViewController ()
 
@@ -107,8 +108,15 @@
     MDCUserDefaultItem *item = self.userDefaultsItems[indexPath.row];
     
     if(item.children.count){
+        
         MDCUserDefaultsBrowserViewController *defaultsBrowser = [[MDCUserDefaultsBrowserViewController alloc] initWithUserDefaultsItems:item.children];
         [self.navigationController pushViewController:defaultsBrowser animated:YES];
+        
+    } else {
+        
+        MDCUserDefaultsEditorViewController *defaultsEditor = [[MDCUserDefaultsEditorViewController alloc] initWithUserDefaultsItem:item];
+        [self.navigationController pushViewController:defaultsEditor animated:YES];
+        
     }
     
 }
