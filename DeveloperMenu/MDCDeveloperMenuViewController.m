@@ -106,7 +106,7 @@
     NSString *plistKey = [[[NSBundle mainBundle] infoDictionary] allKeys][indexPath.row];
     NSString *tableViewText = [MDCValueConverter stringForObscureValue:[[NSBundle mainBundle] infoDictionary][plistKey]];
 
-    CGSize constraint = CGSizeMake(300, MAXFLOAT);
+    CGSize constraint = CGSizeMake(290, MAXFLOAT);
     
     CGSize size = [tableViewText sizeWithFont:[UIFont systemFontOfSize:20] constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
     

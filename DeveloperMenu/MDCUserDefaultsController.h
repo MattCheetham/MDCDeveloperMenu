@@ -19,6 +19,7 @@
  @param item An MDCUserDefaultItem to be deleted
  **/
 - (void)deleteUserDefaultsItem:(MDCUserDefaultItem *)item;
+- (void)saveUserDefaultsItem:(MDCUserDefaultItem *)item;
 
 + (MDCUserDefaultsController *)sharedController;
 

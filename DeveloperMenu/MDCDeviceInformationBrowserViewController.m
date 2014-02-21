@@ -90,7 +90,7 @@
 {
     MDCDeviceInformationItem *deviceItem = [self.deviceInformationController deviceInformationitemsForSectionIndex:indexPath.section][indexPath.row];
     
-    CGSize constraint = CGSizeMake(300, MAXFLOAT);
+    CGSize constraint = CGSizeMake(290, MAXFLOAT);
     
     CGSize size = [deviceItem.deviceValue sizeWithFont:[UIFont systemFontOfSize:20] constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
     

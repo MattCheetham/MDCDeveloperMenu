@@ -13,6 +13,7 @@
 @property (nonatomic, strong) NSString *defaultValue;
 @property (nonatomic, strong) NSString *defaultKey;
 @property (nonatomic, strong) NSMutableArray *children;
+@property (nonatomic, strong) Class originalClass;
 
 - (id)initWithKey:(NSString *)key value:(id)value;
 

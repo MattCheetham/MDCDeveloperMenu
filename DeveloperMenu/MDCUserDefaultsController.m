@@ -36,6 +36,30 @@ static MDCUserDefaultsController *sharedController = nil;
     return self;
 }
 
+- (void)saveUserDefaultsItem:(MDCUserDefaultItem *)item
+{
+    NSString *stringFromClass = NSStringFromClass(item.originalClass);
+    
+    if([stringFromClass isEqualToString:@"__NSCFConstantString"] || [stringFromClass isEqualToString:@"__NSCFString"]){
+        
+        [[NSUserDefaults standardUserDefaults] setObject:item.defaultValue forKey:item.defaultKey];
+        
+    } else if([stringFromClass isEqualToString:@"__NSCFNumber"]) {
+        
+        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:[numberFormatter numberFromString:item.defaultValue] forKey:item.defaultKey];
+        
+    } else {
+        
+        MDCLogErr(@"Cannot save item of class: %@", item.originalClass);
+        
+    }
+    
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [self reloadDefaults];
+}
+
 - (void)deleteUserDefaultsItem:(MDCUserDefaultItem *)item
 {
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:item.defaultKey];

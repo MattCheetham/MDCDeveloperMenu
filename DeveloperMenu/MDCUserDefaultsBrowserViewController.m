@@ -10,6 +10,7 @@
 #import "MDCCell.h"
 #import "MDCUserDefaultItem.h"
 #import "MDCUserDefaultsController.h"
+#import "MDCUserDefaultsEditorViewController.h"
 
 @interface MDCUserDefaultsBrowserViewController ()
 
@@ -93,7 +94,7 @@
 {
     MDCUserDefaultItem *item = self.userDefaultsItems[indexPath.row];
     
-    CGSize constraint = CGSizeMake(300, MAXFLOAT);
+    CGSize constraint = CGSizeMake(290, MAXFLOAT);
     
     CGSize size = [item.defaultValue sizeWithFont:[UIFont systemFontOfSize:20] constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
     
@@ -107,10 +108,31 @@
     MDCUserDefaultItem *item = self.userDefaultsItems[indexPath.row];
     
     if(item.children.count){
+        
         MDCUserDefaultsBrowserViewController *defaultsBrowser = [[MDCUserDefaultsBrowserViewController alloc] initWithUserDefaultsItems:item.children];
         [self.navigationController pushViewController:defaultsBrowser animated:YES];
+        
+    } else if(item.defaultKey) {
+        
+        MDCUserDefaultsEditorViewController *defaultsEditor = [[MDCUserDefaultsEditorViewController alloc] initWithUserDefaultsItem:item];
+        UINavigationController *defaultsNav = [[UINavigationController alloc] initWithRootViewController:defaultsEditor];
+        [self presentViewController:defaultsNav animated:YES completion:nil];
+        
     }
     
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    MDCUserDefaultItem *item = self.userDefaultsItems[indexPath.row];
+    
+    if(item.children.count || !item.defaultKey){
+        return NO;
+    }
+    
+    return YES;
 }
 
 #pragma mark - Edit handling
