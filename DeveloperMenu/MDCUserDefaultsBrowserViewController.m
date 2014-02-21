@@ -113,6 +113,17 @@
     
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    MDCUserDefaultItem *item = self.userDefaultsItems[indexPath.row];
+    
+    if(item.children.count || !item.defaultKey){
+        return NO;
+    }
+    
+    return YES;
+}
+
 #pragma mark - Edit handling
 
 - (void)editItems
