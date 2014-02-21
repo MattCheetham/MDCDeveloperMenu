@@ -40,6 +40,12 @@ typedef enum {
 - (NSString *)logContentWithLevelPrefix;
 
 /**
+ Creates an NSAttributedString from the current object's log level and log content suitable for output in a tableview. These logs are colour coded at the beginning for easy reference.
+ @return NSAttributedString containing colour coded warning level tags
+ **/
+- (NSAttributedString *)attributedLogContentWithlevelPrefix;
+
+/**
  Creates an NSString from the current object's timestamp suitable for displaying in a log viewer
  @return Formatted date string
  **/
