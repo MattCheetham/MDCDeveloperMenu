@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
 
-@interface MDCDeveloperMenuViewController : UITableViewController
+@interface MDCDeveloperMenuViewController : UITableViewController <MFMailComposeViewControllerDelegate, UINavigationControllerDelegate>
 
 - (void)attachToViewController:(UIViewController *)viewController;
 - (void)presentDeveloperConsole;

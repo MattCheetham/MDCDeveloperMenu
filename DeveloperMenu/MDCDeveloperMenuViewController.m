@@ -181,8 +181,12 @@
                 
                 if(!error){
                     
-                    MDCLogInfo(@"File can be found at:%@", [filePath path]);
+                    MFMailComposeViewController *mailview = [[MFMailComposeViewController alloc] init];
+                    mailview.mailComposeDelegate = self;
+                    [mailview addAttachmentData:[NSData dataWithContentsOfFile:[filePath path]] mimeType:@"text/plain" fileName:[filePath lastPathComponent]];
                     
+                    [self presentViewController:mailview animated:YES completion:nil];
+                                        
                 } else {
                     
                     MDCLogErr(@"%@", error);
@@ -196,4 +200,9 @@
     }
 }
 
+#pragma mark - Mail compose delegate
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
+{
+    [controller dismissViewControllerAnimated:YES completion:nil];
+}
 @end
