@@ -104,7 +104,7 @@
     if(indexPath.section == 0){
         
         if(indexPath.row == 0){
-            cell.textLabel.text = @"View Info Plist";
+            cell.textLabel.text = @"View Info plist";
         } else if(indexPath.row == 1){
             cell.textLabel.text = @"View NSUserDefaults";
         } else if(indexPath.row == 2){
@@ -117,7 +117,7 @@
         
         if(indexPath.row == 0){
             
-            cell.textLabel.text = @"Send device report";
+            cell.textLabel.text = @"Email device/log information";
             
         }
         
