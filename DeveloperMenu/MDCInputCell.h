@@ -10,4 +10,6 @@
 
 @interface MDCInputCell : UITableViewCell
 
+@property (nonatomic, strong) UITextField *textField;
+
 @end

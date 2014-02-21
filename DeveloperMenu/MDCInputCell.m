@@ -14,7 +14,10 @@
 {
     self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
     if (self) {
-        // Initialization code
+        
+        self.textField = [UITextField new];
+        [self.contentView addSubview:self.textField];
+        
     }
     return self;
 }
@@ -26,4 +29,13 @@
     // Configure the view for the selected state
 }
 
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+        
+    CGRect textFieldFrame = self.contentView.frame;
+    textFieldFrame.origin.x += 15;
+    textFieldFrame.size.width -= 30;
+    self.textField.frame = textFieldFrame;
+}
 @end
