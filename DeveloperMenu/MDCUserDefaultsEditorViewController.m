@@ -9,10 +9,13 @@
 #import "MDCUserDefaultsEditorViewController.h"
 #import "MDCUserDefaultItem.h"
 #import "MDCInputCell.h"
+#import "MDCUserDefaultsController.h"
 
 @interface MDCUserDefaultsEditorViewController ()
 
 @property (nonatomic, strong) MDCUserDefaultItem *defaultsItem;
+@property (nonatomic, strong) MDCUserDefaultsController *defaultsController;
+@property (nonatomic, strong) UITextField *cellTextField;
 
 @end
 
@@ -31,6 +34,7 @@
         [self.tableView registerClass:[MDCInputCell class] forCellReuseIdentifier:@"Cell"];
         
         self.defaultsItem = item;
+        self.defaultsController = [MDCUserDefaultsController sharedController];
         
     }
     return self;
@@ -66,6 +70,7 @@
     
     cell.textField.text = self.defaultsItem.defaultValue;
     [cell.textField becomeFirstResponder];
+    self.cellTextField = cell.textField;
     
     return cell;
 }
@@ -84,6 +89,8 @@
 
 - (void)savePlistItem
 {
-    MDCLogDebug(@"Not implemented yet sorry");
+    self.defaultsItem.defaultValue = self.cellTextField.text;
+    [self.defaultsController saveUserDefaultsItem:self.defaultsItem];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end
