@@ -69,7 +69,9 @@
     MDCInputCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     cell.textField.text = self.defaultsItem.defaultValue;
+    cell.textField.keyboardType = [self keyboardTypeForClass:self.defaultsItem.originalClass];
     [cell.textField becomeFirstResponder];
+    
     self.cellTextField = cell.textField;
     
     return cell;
@@ -92,5 +94,15 @@
     self.defaultsItem.defaultValue = self.cellTextField.text;
     [self.defaultsController saveUserDefaultsItem:self.defaultsItem];
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - Keyboard
+- (UIKeyboardType)keyboardTypeForClass:(Class)class
+{
+    if([NSStringFromClass(class) isEqualToString:@"__NSCFNumber"]){
+        return UIKeyboardTypeNumberPad;
+    }
+    
+    return UIKeyboardTypeAlphabet;
 }
 @end
