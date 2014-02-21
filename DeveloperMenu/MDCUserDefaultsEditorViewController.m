@@ -65,6 +65,7 @@
     MDCInputCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     cell.textField.text = self.defaultsItem.defaultValue;
+    [cell.textField becomeFirstResponder];
     
     return cell;
 }
@@ -72,5 +73,17 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     return self.defaultsItem.defaultKey;
+}
+
+#pragma mark - Navigation button handling
+
+- (void)cancelPlistEditing
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)savePlistItem
+{
+    MDCLogDebug(@"Not implemented yet sorry");
 }
 @end
