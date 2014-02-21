@@ -51,4 +51,19 @@ static MDCLogController *sharedController = nil;
     [self didChangeValueForKey:@"deviceLogs"];
 }
 
+- (void)generateLogFileWithcompletion:(MDCCreateLogCompletion)completion
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = paths[0];
+    NSURL *documentsURL = [NSURL URLWithString:documentsDirectory];
+    
+    NSString *fileName = [NSString stringWithFormat:@"log_%.0f", [NSDate timeIntervalSinceReferenceDate]];
+    NSURL *destinationURL = [documentsURL URLByAppendingPathComponent:fileName];
+    
+    NSError *writeError;
+    [[NSFileManager defaultManager] createFileAtPath:[destinationURL path] contents:nil attributes:nil];
+    
+    completion(destinationURL, writeError);
+}
+
 @end
