@@ -61,8 +61,7 @@
     static NSString *CellIdentifier = @"Cell";
     MDCInputCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
-    cell.textLabel.text = self.defaultsItem.defaultValue;
+    cell.textField.text = self.defaultsItem.defaultValue;
     
     return cell;
 }
