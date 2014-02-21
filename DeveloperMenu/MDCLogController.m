@@ -69,7 +69,7 @@ static MDCLogController *sharedController = nil;
     //Setup string
     NSMutableString *logContents = [NSMutableString string];
     
-    [logContents appendString:@"Device information\n\n"];
+    [logContents appendString:@"Device information\n"];
     
     //Add device info to string
     MDCDeviceInformationController *deviceInfoController = [MDCDeviceInformationController sharedController];
