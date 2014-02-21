@@ -39,7 +39,7 @@ static MDCLogController *sharedController = nil;
     return self;
 }
 
-- (void)addLogWithLevel:(MDCLogLevel)logLevel logContent:(NSString *)logContent, ...
+- (void)addLogWithLevel:(MDCLogLevel)logLevel function:(const char *)function logContent:(NSString *)logContent, ...
 {
     va_list args;
     va_start(args, logContent);
@@ -47,7 +47,7 @@ static MDCLogController *sharedController = nil;
                                                arguments:args];
     va_end(args);
     
-    MDCLog *log = [MDCLog logWithContent:message content:logLevel];
+    MDCLog *log = [MDCLog logWithContent:[NSString stringWithFormat:@"%s %@", function, message] content:logLevel];
     [self willChangeValueForKey:@"deviceLogs"];
     [self.deviceLogs addObject:log];
     [self didChangeValueForKey:@"deviceLogs"];
