@@ -39,6 +39,7 @@
 		494442B218B55C6800B74627 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 494442B118B55C6800B74627 /* SystemConfiguration.framework */; };
 		49608A6518B7152B0033D758 /* MDCUserDefaultsEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49608A6418B7152B0033D758 /* MDCUserDefaultsEditorViewController.m */; };
 		49608A6818B715ED0033D758 /* MDCInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49608A6718B715ED0033D758 /* MDCInputCell.m */; };
+		49608A6A18B735460033D758 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49608A6918B735460033D758 /* MessageUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,7 @@
 		49608A6418B7152B0033D758 /* MDCUserDefaultsEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCUserDefaultsEditorViewController.m; sourceTree = "<group>"; };
 		49608A6618B715ED0033D758 /* MDCInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCInputCell.h; sourceTree = "<group>"; };
 		49608A6718B715ED0033D758 /* MDCInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCInputCell.m; sourceTree = "<group>"; };
+		49608A6918B735460033D758 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49608A6A18B735460033D758 /* MessageUI.framework in Frameworks */,
 				494442B218B55C6800B74627 /* SystemConfiguration.framework in Frameworks */,
 				494442B018B5336D00B74627 /* CoreTelephony.framework in Frameworks */,
 				33A61838188A756E007D5701 /* CoreGraphics.framework in Frameworks */,
@@ -156,6 +159,7 @@
 		33A61834188A756E007D5701 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				49608A6918B735460033D758 /* MessageUI.framework */,
 				494442B118B55C6800B74627 /* SystemConfiguration.framework */,
 				494442AF18B5336D00B74627 /* CoreTelephony.framework */,
 				33A61835188A756E007D5701 /* Foundation.framework */,
