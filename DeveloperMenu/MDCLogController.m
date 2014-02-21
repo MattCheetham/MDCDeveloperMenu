@@ -7,6 +7,8 @@
 //
 
 #import "MDCLogController.h"
+#import "MDCDeviceInformationController.h"
+#import "MDCDeviceInformationItem.h"
 
 @interface MDCLogController ()
 
@@ -53,6 +55,7 @@ static MDCLogController *sharedController = nil;
 
 - (void)generateLogFileWithCompletion:(MDCCreateLogCompletion)completion
 {
+    //Setup file
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = paths[0];
     NSURL *documentsURL = [NSURL URLWithString:documentsDirectory];
@@ -60,10 +63,28 @@ static MDCLogController *sharedController = nil;
     NSString *fileName = [NSString stringWithFormat:@"log_%.0f", [NSDate timeIntervalSinceReferenceDate]];
     NSURL *destinationURL = [documentsURL URLByAppendingPathComponent:fileName];
     
-    NSError *writeError;
+    NSError *fileCreateError;
     [[NSFileManager defaultManager] createFileAtPath:[destinationURL path] contents:nil attributes:nil];
     
-    completion(destinationURL, writeError);
+    //Setup string
+    NSMutableString *logContents = [NSMutableString string];
+    
+    //Add device info to string
+    MDCDeviceInformationController *deviceInfoController = [MDCDeviceInformationController sharedController];
+    for(MDCDeviceInformationItem *deviceInfoItem in deviceInfoController.deviceInformationItems)
+    {
+        [logContents appendFormat:@"%@: %@\n", deviceInfoItem.deviceProperty, deviceInfoItem.deviceValue];
+    }
+    
+    if(fileCreateError){
+        completion(nil, fileCreateError);
+    }
+    
+    //Write data to file
+    NSError *dataWritingError;
+    [logContents writeToFile:[destinationURL path] atomically:YES encoding:NSUTF8StringEncoding error:&dataWritingError];
+    
+    completion(destinationURL, dataWritingError);
 }
 
 @end
