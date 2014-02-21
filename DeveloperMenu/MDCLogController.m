@@ -51,7 +51,7 @@ static MDCLogController *sharedController = nil;
     [self didChangeValueForKey:@"deviceLogs"];
 }
 
-- (void)generateLogFileWithcompletion:(MDCCreateLogCompletion)completion
+- (void)generateLogFileWithCompletion:(MDCCreateLogCompletion)completion
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = paths[0];

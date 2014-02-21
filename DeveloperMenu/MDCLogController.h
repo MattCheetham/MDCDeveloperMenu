@@ -63,5 +63,5 @@ typedef void (^MDCCreateLogCompletion)(NSURL *filePath, NSError *error);
  Generates a log file to be saved to the documents directory of the application
  @param completion A MDCCreateLogCompletion block to be fired when the task is complete
  **/
-- (void)generateLogFileWithcompletion:(MDCCreateLogCompletion)completion;
+- (void)generateLogFileWithCompletion:(MDCCreateLogCompletion)completion;
 @end

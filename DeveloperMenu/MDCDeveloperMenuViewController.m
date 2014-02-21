@@ -177,7 +177,7 @@
         
         if(indexPath.row == 0){
             
-            [self.logController generateLogFileWithcompletion:^(NSURL *filePath, NSError *error) {
+            [self.logController generateLogFileWithCompletion:^(NSURL *filePath, NSError *error) {
                 
                 if(!error){
                     
