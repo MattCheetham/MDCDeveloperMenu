@@ -19,6 +19,8 @@
         
         self.defaultKey = key;
         
+        self.originalClass = [value class];
+                
         if([value isKindOfClass:[NSDictionary class]]){
             
             for (NSString *dictionaryKey in (NSDictionary *)value){
