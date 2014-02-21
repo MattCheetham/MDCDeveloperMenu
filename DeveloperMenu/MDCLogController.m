@@ -69,6 +69,8 @@ static MDCLogController *sharedController = nil;
     //Setup string
     NSMutableString *logContents = [NSMutableString string];
     
+    [logContents appendString:@"Device information\n\n"];
+    
     //Add device info to string
     MDCDeviceInformationController *deviceInfoController = [MDCDeviceInformationController sharedController];
     for(MDCDeviceInformationItem *deviceInfoItem in deviceInfoController.deviceInformationItems)
@@ -76,6 +78,19 @@ static MDCLogController *sharedController = nil;
         [logContents appendFormat:@"%@: %@\n", deviceInfoItem.deviceProperty, deviceInfoItem.deviceValue];
     }
     
+    [logContents appendString:@"\n\nDevice Logs\n"];
+    
+    //Add device logs to string
+    for(MDCLog *deviceLog in self.deviceLogs){
+        
+        [logContents appendFormat:@"%@\n", [deviceLog logContentWithLevelPrefix]];
+        
+    }
+    
+    //Add plist info
+    
+    [logContents appendFormat:@"\n\nInfo Plist\n%@", [[NSBundle mainBundle] infoDictionary]];
+        
     if(fileCreateError){
         completion(nil, fileCreateError);
     }
