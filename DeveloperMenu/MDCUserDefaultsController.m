@@ -36,6 +36,14 @@ static MDCUserDefaultsController *sharedController = nil;
     return self;
 }
 
+- (void)saveUserDefaultsItem:(MDCUserDefaultItem *)item
+{
+    [[NSUserDefaults standardUserDefaults] setObject:item.defaultValue forKey:item.defaultKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [self reloadDefaults];
+}
+
 - (void)deleteUserDefaultsItem:(MDCUserDefaultItem *)item
 {
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:item.defaultKey];
