@@ -58,7 +58,7 @@ static MDCLogController *sharedController = nil;
     //Setup file
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = paths[0];
-    NSURL *documentsURL = [NSURL URLWithString:documentsDirectory];
+    NSURL *documentsURL = [NSURL fileURLWithPath:documentsDirectory];
     
     NSString *fileName = [NSString stringWithFormat:@"log_%.0f", [NSDate timeIntervalSinceReferenceDate]];
     NSURL *destinationURL = [documentsURL URLByAppendingPathComponent:fileName];

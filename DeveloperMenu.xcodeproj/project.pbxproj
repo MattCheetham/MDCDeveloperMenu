@@ -39,7 +39,6 @@
 		494442B218B55C6800B74627 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 494442B118B55C6800B74627 /* SystemConfiguration.framework */; };
 		49608A6518B7152B0033D758 /* MDCUserDefaultsEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49608A6418B7152B0033D758 /* MDCUserDefaultsEditorViewController.m */; };
 		49608A6818B715ED0033D758 /* MDCInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49608A6718B715ED0033D758 /* MDCInputCell.m */; };
-		49608A6A18B735460033D758 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49608A6918B735460033D758 /* MessageUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,7 +114,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49608A6A18B735460033D758 /* MessageUI.framework in Frameworks */,
 				494442B218B55C6800B74627 /* SystemConfiguration.framework in Frameworks */,
 				494442B018B5336D00B74627 /* CoreTelephony.framework in Frameworks */,
 				33A61838188A756E007D5701 /* CoreGraphics.framework in Frameworks */,
