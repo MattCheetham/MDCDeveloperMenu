@@ -181,12 +181,10 @@
                 
                 if(!error){
                     
-                    MFMailComposeViewController *mailview = [[MFMailComposeViewController alloc] init];
-                    mailview.mailComposeDelegate = self;
-                    [mailview addAttachmentData:[NSData dataWithContentsOfFile:[filePath path]] mimeType:@"text/plain" fileName:[filePath lastPathComponent]];
+                    UIActivityViewController *shareView = [[UIActivityViewController alloc] initWithActivityItems:@[filePath] applicationActivities:nil];
+
+                    [self presentViewController:shareView animated:YES completion:nil];
                     
-                    [self presentViewController:mailview animated:YES completion:nil];
-                                        
                 } else {
                     
                     MDCLogErr(@"%@", error);
