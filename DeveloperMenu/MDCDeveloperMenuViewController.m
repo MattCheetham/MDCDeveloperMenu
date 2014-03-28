@@ -181,6 +181,8 @@
                 
                 if(!error){
                     
+                    MDCLogDebug(@"Generated Log File with path:%@", filePath);
+                    
                     UIActivityViewController *shareView = [[UIActivityViewController alloc] initWithActivityItems:@[filePath] applicationActivities:nil];
 
                     [self presentViewController:shareView animated:YES completion:nil];
